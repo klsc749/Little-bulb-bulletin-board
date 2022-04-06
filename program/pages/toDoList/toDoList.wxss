@@ -1,0 +1,52 @@
+/* pages/toDoList/toDoList.wxss */
+.pageContainer {
+  display:flex;
+  min-height: 100vh;
+  background-color:rgba(192, 200, 207, 0.315);
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.ToDoItem {
+  display:flex;
+  height: 75rpx;
+  width: 90%;
+  justify-content: space-between;
+  border: gray 0px solid;
+  border-radius: 30rpx;
+  margin-left: 5%;
+  margin-top: 30rpx;
+  padding-top: 20rpx;
+  background-color: #fff;
+}
+
+.leftIcon {
+  display: flex;
+  height:60rpx;
+  width: 60rpx;
+  padding-left: 20rpx;
+}
+
+.sortAndEdit {
+  display: flex;
+  justify-content: center;
+  margin-left: 70%;
+  margin-top: 30rpx;
+  width: 25%;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 30rpx;
+  background-color: #fff;
+  border: gray 0px solid;
+}
+
+.tapeffect {
+  background-color: rgb(184, 182, 182);
+  color: #fff;
+}
+
+.deadLine {
+  font-size: 30rpx;
+  display: inline-block;
+  padding-right: 20rpx;
+}
