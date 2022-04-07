@@ -1,14 +1,14 @@
 # Little-bulb-bulletin-board
 ## 文件目录
 * *program*用于存放微信小程序项目
-  
+  * cloudfunctions用于储存云函数
   * resourse用于储存小程序资源文件
     * icons用于储存小程序的UI图标
   
   * pages用于储存小程序页面
   * utils工具（暂时没用，大概？:)）
   
-* images用于设计图
+* images用于储存设计图
 ## API接口
 
 ### 调用云函数示例
