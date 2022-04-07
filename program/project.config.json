@@ -1,5 +1,6 @@
 {
     "description": "项目配置文件",
+    "cloudfunctionRoot": "cloudfunctions/",
     "packOptions": {
         "ignore": [
             {
@@ -48,7 +49,7 @@
     },
     "compileType": "miniprogram",
     "libVersion": "2.19.4",
-    "appid": "wx53cbe639cf213887",
+    "appid": "wx33d46f82d9b60c8f",
     "projectname": "Little-bulb-bulletin-board",
     "debugOptions": {
         "hidedInDevtools": []
@@ -59,6 +60,7 @@
         "servePath": ""
     },
     "isGameTourist": false,
+    "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
     "condition": {
         "search": {
             "list": []

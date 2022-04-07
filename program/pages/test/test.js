@@ -5,14 +5,29 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        sum : 0,
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        wx.cloud.init();
+        wx.cloud.callFunction({
+            name : 'GetTodosOfGroup',
+            data : {
+                groupID : "45"
+            },
+            success : function(res){
+                console.log(res.result);
+                // if(res.result == 0){
+                //     console.log("失败")
+                // }else if(res.result == 1){
+                //     console.log("成功")
+                // }
+            },
+            fail: console.error
+        });
     },
 
     /**
