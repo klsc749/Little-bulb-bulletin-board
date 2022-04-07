@@ -9,14 +9,18 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext()
     if(event.name)
     {    
-      await db.collection('users').add({
-        // data 字段表示需新增的 JSON 数据
-        data: {
-            _id : wxContext.OPENID,
-            name : event.name,
-        }
-      })
-      return 1
+      try {
+        await db.collection('users').add({
+          // data 字段表示需新增的 JSON 数据
+          data: {
+              _id : wxContext.OPENID,
+              name : event.name,
+          }
+        })
+        return 1
+      }catch(e) {
+            console.error(e)
+      }
     }
     return 0;
 }
