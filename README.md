@@ -237,15 +237,48 @@ wx.cloud.callFunction({
   > ```javascript
   > wx.cloud.init();
   > wx.cloud.callFunction({
-  >     name : 'GetTodosOfGroup',
+  >      name : 'GetTodosOfGroup',
+  >      data : {
+  >          groupID : "......"
+  >      },
+  >      success : function(res){
+  >          console.log(res.result.data[0]);//打印出第一条数据
+  >      },
+  >      fail: console.error
+  > });
+  > ```
+
+* 获得一个用户的所有代办
+
+  > 函数名 : GetTodosOfUsers
+  >
+  > 传入数据 （传入的ID通过查询获得）
+  >
+  > ```json
+  > userID : "........"
+  > ```
+  >
+  > 返回数据
+  >
+  > 一个储存着待办ID的Array数组，
+  >
+  > 使用示例
+  >
+  > ```javascript
+  > wx.cloud.init();
+  > wx.cloud.callFunction({
+  >     name : 'GetTodosOfUser',
+  >     data: {
+  >     	userID : "ocFn-4u3IjIMQZ_csfo3IhzWrXJM"
+  >     },
   >     success : function(res){
-  >         console.log(res.result.data[0]);//打印出第一条数据
+  >         console.log(res.result.lenth);
   >     },
   >     fail: console.error
   > });
   > ```
 
-* .....
+* 
 
 
 ## 设计

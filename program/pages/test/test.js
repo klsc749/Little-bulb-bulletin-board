@@ -14,12 +14,12 @@ Page({
     onLoad: function (options) {
         wx.cloud.init();
         wx.cloud.callFunction({
-            name : 'AddUser',
-            data : {
-                name : "45"
+            name : 'GetTodosOfUser',
+            data: {
+                userID : "ocFn-4u3IjIMQZ_csfo3IhzWrXJM"
             },
             success : function(res){
-                console.log(res);
+                console.log(res.result);
                 if(res.result == 0){
                     console.log("失败")
                 }else if(res.result == 1){
