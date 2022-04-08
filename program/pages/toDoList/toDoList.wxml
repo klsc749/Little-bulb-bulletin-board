@@ -1,46 +1,25 @@
 <!--pages/toDoList/toDoList.wxml-->
 <view class="pageContainer">
-  <view class="ToDoItem" wx:if="{{visibility[ToDoID]==1}}" id="{{ToDoID}}" hover-class="tapeffect" ><!-- 需要从服务器上拿到事件的ID -->
-    <view style="display: inline-block;">
-      <image src="/resourse/icons/取消.png" class="leftIcon" bindtap="deleteToDo" id="1"></image>
-    </view>
-    写作业<!--从服务器拿字符串变量-->
-    <view class="deadLine">
-      4月6日9：00<!--从服务器拿字符串变量-->
-    </view>
-  </view>
-  
-
-
-
-
-
-
-
-
-
-
-
-  <view class="ToDoItem" wx:for="{{array}}" wx:key="id" wx:for-item="i" id="{{ToDoID}}" hover-class="tapeffect">
-    <image src="/resourse/icons/取消.png" class="leftIcon" bindtap="deleteToDo"></image>
+  <view class="ToDoItem" wx:for="{{array}}" wx:key="*this" wx:for-item="i" wx:if="{{visibility[j]==1}}" hover-class="tapeffect" wx:for-index="j" data-ids="{{j}}" bindtap="setID">
+    <image src="/resourse/icons/取消.png" class="leftIcon" bindtap="deleteToDo" data-ids="{{j}}"></image>
     {{i}}
     <view class="deadLine">
-      从服务器端获取的日期
+      {{dueDate[j]}}
     </view>
   </view>
 
-  <view class="ToDoItem" wx:if="{{visibility[ToDoID]!=1}}" id="{{ToDoID}}" hover-class="tapeffect" >
+  <view class="ToDoItem" wx:if="{{visibility[j]!=1}}" hover-class="tapeffect" wx:for-index="j" wx:for="{{array}}" wx:key="*this" wx:for-item="i" data-ids="{{j}}">
     <view style="display: inline-block;">
-      <image src="/resourse/icons//确定.png" class="leftIcon" bindtap="deleteToDo" id="1"></image>
+      <image src="/resourse/icons//确定.png" class="leftIcon"id="1"></image>
     </view>
-    写作业
+    {{i}}
     <view class="deadLine">
-      4月6日9：00
+      已完成
     </view>
   </view>
 
   <view class="sortAndEdit" hover-class="tapeffect">
     排序/编辑
   </view>
-  <button style="position: absolute;bottom: 0;" type="warn" bindtap="addToDoItem">test</button>
+
 </view>
