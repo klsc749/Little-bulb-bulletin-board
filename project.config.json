@@ -1,19 +1,15 @@
 {
   "description": "项目配置文件",
-  "cloudfunctionRoot": "cloudfunctions/",
   "packOptions": {
-    "ignore": [
-      {
-        "type": "file",
-        "value": ".eslintrc.js"
-      }
-    ]
+    "ignore": []
   },
   "setting": {
+    "bundle": false,
+    "userConfirmedBundleSwitch": false,
     "urlCheck": true,
     "scopeDataCheck": false,
     "coverView": true,
-    "es6": false,
+    "es6": true,
     "postcss": true,
     "compileHotReLoad": false,
     "lazyloadPlaceholderEnable": false,
@@ -23,7 +19,7 @@
     "newFeature": false,
     "uglifyFileName": false,
     "uploadWithSourceMap": true,
-    "useIsolateContext": false,
+    "useIsolateContext": true,
     "nodeModules": false,
     "enhance": true,
     "useMultiFrameRuntime": true,
@@ -31,15 +27,16 @@
     "useApiHostProcess": true,
     "showShadowRootInWxmlPanel": true,
     "packNpmManually": false,
+    "enableEngineNative": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
-    "disableUseStrict": false,
+    "showES6CompileOption": false,
     "minifyWXML": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.19.4",
+  "libVersion": "2.23.4",
   "appid": "wx33d46f82d9b60c8f",
-  "projectname": "Little-bulb-bulletin-board",
+  "projectname": "miniprogram-2",
   "debugOptions": {
     "hidedInDevtools": []
   },
@@ -49,7 +46,6 @@
     "servePath": ""
   },
   "isGameTourist": false,
-  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "search": {
       "list": []

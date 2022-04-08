@@ -14,17 +14,17 @@ Page({
     onLoad: function (options) {
         wx.cloud.init();
         wx.cloud.callFunction({
-            name : 'AddUser',
+            name : 'GetTodosOfGroup',
             data : {
-                name : "45"
+                groupID : "45"
             },
             success : function(res){
-                console.log(res);
-                if(res.result == 0){
-                    console.log("失败")
-                }else if(res.result == 1){
-                    console.log("成功")
-                }
+                console.log(res.result);
+                // if(res.result == 0){
+                //     console.log("失败")
+                // }else if(res.result == 1){
+                //     console.log("成功")
+                // }
             },
             fail: console.error
         });

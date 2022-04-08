@@ -11,9 +11,32 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
-    })
+    }),
+    wx.cloud.init();
+    wx.cloud.callFunction({
+    name : 'AddTodo',
+    data : {
+        description : "Web开发",
+        due : "2018-04-02",
+        groupID : "45" //通过查询获得
+    },
+    success : function(res){
+        console.log(res.result);
+        if(res.result == 0){
+            //添加失败
+            console.log("fail");
+        }else if(res.result == 1){
+            //添加成功
+            console.log("succeed");
+		}
+    },
+    fail: console.error
+  });
+  
   },
   globalData: {
-    userInfo: null
-  }
+    userInfo: null,
+    testToDoList:null
+  },
+
 })
