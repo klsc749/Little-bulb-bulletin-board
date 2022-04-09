@@ -6,14 +6,18 @@ const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext()
-    if(event.userID)
+    if(event.userID || event.todoID)
     {
         try {
-            var s = await db.collection('todosOfUser').where({
-                userID : event.userID// 填入当前用户 openid
-            }).get()
-            var data = s.data
-            return data
+            await db.collection('todosOfUser').where({
+                userID : event.userID,
+                todoID : event.todoID
+            }).update({
+                data: {
+                  done : 1
+                },
+              })
+            return 1
         } catch(e) {
             console.error(e)
         }

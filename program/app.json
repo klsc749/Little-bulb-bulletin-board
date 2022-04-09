@@ -1,6 +1,7 @@
 {
     "cloud": true,
     "pages": [
+        "pages/test/test",
         "pages/toDoList/toDoList",
         "pages/index/index",
         "pages/logs/logs"
@@ -20,13 +21,13 @@
           "selectedIconPath": "resourse/icons/待办事项2.png"
         },
         {
-            "pagePath": "pages/index/index",
+            "pagePath": "pages/toDoList/toDoList",
             "text": "添加",
             "iconPath": "/resourse/icons/添加2.png",
             "selectedIconPath": "/resourse/icons/添加.png"
         },
         {
-            "pagePath": "pages/logs/logs",
+            "pagePath": "pages/toDoList/toDoList",
             "text": "我的",
             "iconPath": "/resourse/icons/我的 (2).png",
             "selectedIconPath": "/resourse/icons/我的 (1).png"

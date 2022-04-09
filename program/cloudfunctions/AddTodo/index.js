@@ -21,12 +21,13 @@ exports.main = async (event, context) => {
     }).get()
 
     var s = data.data;
-    const _ = db.command
     for( i = 0; i < s.length; i++)
     {
-      db.collection("users").doc(s[i].userID).update({
-        data: {
-          todoIDs: _.addToSet(id._id)
+      db.collection("todosOfUser").add({
+        data : {
+          userID : s[i].userID,
+          todoID : id._id,
+          done : 0,
         }
       })
     }

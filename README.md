@@ -260,25 +260,57 @@ wx.cloud.callFunction({
   >
   > 返回数据
   >
-  > 一个储存着待办ID的Array数组，
+  > 一个储存着待办信息的Array数组，
+  >
+  > 数组的对象的属性， userID：用户ID； todoID：用户ID； done：0代表未完成，1代表完成
   >
   > 使用示例
   >
   > ```javascript
   > wx.cloud.init();
   > wx.cloud.callFunction({
-  >     name : 'GetTodosOfUser',
-  >     data: {
-  >     	userID : "ocFn-4u3IjIMQZ_csfo3IhzWrXJM"
+  >      name : 'GetTodosOfUser',
+  >      data: {
+  >          userID : "ocFn-4u3IjIMQZ_csfo3IhzWrXJM"
+  >      },
+  >      success : function(res){
+  >          	console.log(res.result.lenth);
+  >      },
+  >      fail: console.error
+  > });
+  > ```
+
+* 将一个用户的一个代办设置为完成
+
+  > 函数名 : SetTodoDone
+  >
+  > 传入数据 （传入的ID通过查询获得）
+  >
+  > ```json
+  > userID : "........"
+  > todoID : "........"
+  > ```
+  >
+  > 返回数据
+  >
+  > 0代表设置失败，1代表设置成功
+  >
+  > 使用示例
+  >
+  > ```javascript
+  > wx.cloud.init();
+  > wx.cloud.callFunction({
+  >     name : 'SetTodoDone',
+  >     data : {
+  >         userID : "ocFn-4txhpm6foAh4NMRKo_498Zw",
+  >         todoID : "d4107ab16251886b061a15093c1f26f5"
   >     },
   >     success : function(res){
-  >         console.log(res.result.lenth);
+  > 		console.log(res.result);
   >     },
   >     fail: console.error
   > });
   > ```
-
-* 
 
 
 ## 设计
