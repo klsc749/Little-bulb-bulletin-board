@@ -6,7 +6,7 @@
     * icons用于储存小程序的UI图标
   
   * pages用于储存小程序页面
-  * utils工具（暂时没用，大概？:)）
+  * utils工具
   
 * images用于储存设计图
 ## API接口
