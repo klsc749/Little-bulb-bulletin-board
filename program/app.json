@@ -20,13 +20,13 @@
           "selectedIconPath": "resourse/icons/待办事项2.png"
         },
         {
-            "pagePath": "pages/toDoList/toDoList",
+            "pagePath": "pages/index/index",
             "text": "添加",
             "iconPath": "/resourse/icons/添加2.png",
             "selectedIconPath": "/resourse/icons/添加.png"
         },
         {
-            "pagePath": "pages/toDoList/toDoList",
+            "pagePath": "pages/logs/logs",
             "text": "我的",
             "iconPath": "/resourse/icons/我的 (2).png",
             "selectedIconPath": "/resourse/icons/我的 (1).png"

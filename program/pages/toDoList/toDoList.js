@@ -8,8 +8,8 @@ Page({
     array:['none','none','coding','coding'],
     index:0,
     visibility:[1,1,1,1,1],
-    ToDoID:0,//从服务器获取ID
-    dueDate:["2021-4-8"]
+    dueDate:["2021-4-8"],
+    daysleft:0
   },
 
   deleteToDo: function(e){//其实没有把事件真的删了，只是换了个显示方式
@@ -23,20 +23,53 @@ Page({
 
   setID: function(e){
     console.log(e);
+    ToDoID=parseInt(e.currentTarget.dataset.ids);
+  },
+
+  showDetail: function(e){
+    
+    console.log(e);
+    var i=parseInt(e.currentTarget.dataset.ids);
+    if(this.data.visibility[i]==1)
+    {
+        wx.showModal({
+        title:'设置提醒推送:(格式：剩余多少天提醒/重复提醒时间)',
+        content:"",
+        cancelColor: 'cancelColor',
+        editable:true,
+        placeholderText:'样例：5/1',
+        success (res) {
+          if(res.confirm)
+          {
+            var num=res.content.match(/\d+/g);
+            console.log("success");
+            toReportday[ToDoID]=parseInt(num[0]);
+            repeat[ToDoID]=parseInt(num[1]);
+          }
+          else if(res.cancel)
+          {
+            console.log('fail');
+          }
+        }
+      })
+    }
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var Todaydate=util.formatDate(new Date());
+    console.log(typeof Todaydate);
     for(index=0;index<app.globalData.testToDoList.length;index++)
     {
       thingList[index]=app.globalData.testToDoList[index];
-      dueDate[index]=index+1+"月";
+      dueDate[index]=Todaydate;
       isFinished[index]=1;//事件初始 1 未完成 0 已完成
     }
     //从服务区获取数据
+    
     wx.cloud.init();
     var that=this;
     wx.cloud.callFunction({
@@ -46,12 +79,20 @@ Page({
     },
     success : function(res){
         console.log(res.result.data[0].description);//打印出第一条数据
-        thingList[index]=res.result.data[0].description;
-        dueDate[index++]=res.result.data[0].due;
+        thingList[index]=res.result.data[0].description;//这里是测试数据要修改
+        dueDate[index++]=res.result.data[0].due;//这里是测试数据要修改
         console.log(thingList.length);
+        var value="2022-05-29"//dueDate[0];//这里是测试数据要修改
+        var value2=Todaydate;
+        var value_num=new Date(value.replace(/-/g,"/"));
+        var value2_num=new Date(value2.replace(/-/g,"/"));
+        var leftdays=parseInt((value_num.getTime() - value2_num.getTime()) / (1000*60*60*24));
+        console.log(value_num);
+        console.log(value2_num);
         that.setData({
           array:thingList,
-          dueDate:dueDate
+          dueDate:dueDate,
+          daysleft:leftdays
         })
     },
     fail: console.error
@@ -114,6 +155,8 @@ var isFinished=[];
 var dueDate=[];
 const app=getApp();
 app.globalData.testToDoList=['学HTML','学CSS','学JS'];
-var index2=0;
+var ToDoID=0;
 var IDofGroup;
-
+var repeat=[];
+var toReportday=[];
+const util=require('../../utils/util.js')

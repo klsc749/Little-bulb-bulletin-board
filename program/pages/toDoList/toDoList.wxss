@@ -49,4 +49,12 @@
   font-size: 30rpx;
   display: inline-block;
   padding-right: 20rpx;
+  line-height: 30rpx;
 }
+
+.textStyle {
+  overflow:hidden;
+  text-overflow:ellipsis;
+  
+}
+

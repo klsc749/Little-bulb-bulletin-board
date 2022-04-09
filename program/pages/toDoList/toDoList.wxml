@@ -1,10 +1,15 @@
 <!--pages/toDoList/toDoList.wxml-->
 <view class="pageContainer">
-  <view class="ToDoItem" wx:for="{{array}}" wx:key="*this" wx:for-item="i" wx:if="{{visibility[j]==1}}" hover-class="tapeffect" wx:for-index="j" data-ids="{{j}}" bindtap="setID">
+  <view class="ToDoItem" wx:for="{{array}}" wx:key="*this" wx:for-item="i" wx:if="{{visibility[j]==1}}" hover-class="tapeffect" wx:for-index="j" data-ids="{{j}}" bindtap="setID" bindtap="showDetail">
     <image src="/resourse/icons/取消.png" class="leftIcon" bindtap="deleteToDo" data-ids="{{j}}"></image>
-    {{i}}
+    <text class="textStyle">{{i}}</text>
     <view class="deadLine">
-      {{dueDate[j]}}
+      <view>
+        {{dueDate[j]}}
+      </view>
+      <view style="display: inline;">
+        剩余<view style="color: red;display: inline;">{{daysleft}}</view>天
+      </view>
     </view>
   </view>
 
