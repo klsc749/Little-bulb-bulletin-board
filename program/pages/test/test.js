@@ -14,9 +14,10 @@ Page({
     onLoad: function (options) {
         wx.cloud.init();
         wx.cloud.callFunction({
-            name : 'GetTodosOfGroup',
+            name : 'SetTodoDone',
             data : {
-                groupID : "45"
+               userID : "ocFn-4txhpm6foAh4NMRKo_498Zw",
+               todoID : "d4107ab16251886b061a15093c1f26f5"
             },
             success : function(res){
                 console.log(res.result);

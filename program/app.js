@@ -14,6 +14,7 @@ App({
     })
     /*
     wx.cloud.init();
+//<<<<<<< HEAD
     wx.cloud.callFunction({
     name : 'AddTodo',
     data : {
@@ -34,6 +35,28 @@ App({
     fail: console.error
   });
   */
+//=======
+  //   wx.cloud.callFunction({
+  //   name : 'AddTodo',
+  //   data : {
+  //       description : "Web开发",
+  //       due : "2018-04-02",
+  //       groupID : "45" //通过查询获得
+  //   },
+  //   success : function(res){
+  //       console.log(res.result);
+  //       if(res.result == 0){
+  //           //添加失败
+  //           console.log("fail");
+  //       }else if(res.result == 1){
+  //           //添加成功
+  //           console.log("succeed");
+	// 	}
+  //   },
+  //   fail: console.error
+  // });
+  
+//>>>>>>> 3708068bb01059cf628d63e3f9fb5246baa3c522
   },
   globalData: {
     userInfo: null,
