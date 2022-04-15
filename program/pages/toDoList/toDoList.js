@@ -7,9 +7,9 @@ Page({
   data: {
     array:['none','none','coding','coding'],
     index:0,
-    visibility:[1,1,1,1,1],
+    visibility:[],
     dueDate:["2021-4-8"],
-    daysleft:0
+    daysleft:[]
   },
 
   deleteToDo: function(e){//其实没有把事件真的删了，只是换了个显示方式
@@ -17,7 +17,7 @@ Page({
     var i=parseInt(e.currentTarget.dataset.ids);
     console.log(i);
     this.setData({
-      [`visibility[${i}]`]:0
+      [`visibility[${i}]`]:1
     })
   },
 
@@ -30,7 +30,7 @@ Page({
     
     console.log(e);
     var i=parseInt(e.currentTarget.dataset.ids);
-    if(this.data.visibility[i]==1)
+    if(this.data.visibility[i]==0)
     {
         wx.showModal({
         title:'设置提醒推送:(格式：剩余多少天提醒/重复提醒时间)',
@@ -60,48 +60,89 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("first");
+    console.log(this.data.visibility);
     var Todaydate=util.formatDate(new Date());
     console.log(typeof Todaydate);
-    for(index=0;index<app.globalData.testToDoList.length;index++)
-    {
-      thingList[index]=app.globalData.testToDoList[index];
-      dueDate[index]=Todaydate;
-      isFinished[index]=1;//事件初始 1 未完成 0 已完成
-    }
+    // for(index=0;index<app.globalData.testToDoList.length;index++)
+    // {
+    //   thingList[index]=app.globalData.testToDoList[index];
+    //   dueDate[index]="2022-04-25";
+    //   this.setData({
+    //     [`daysleft[${index}]`]:666
+    //   })
+    // }
     //从服务区获取数据
+    wx.cloud.init();
+    wx.cloud.callFunction({
+    name : 'GetTodosOfUser',
+    data: {
+        userID : "ocFn-4u3IjIMQZ_csfo3IhzWrXJM"
+    },
+    success : function(res){
+          console.log(res.result);
+          wx.getStorage({
+            key:"key",
+            success (res) {
+              console.log(res.data);
+            }
+          });
+          console.log(that.data.visibility);
+    },
+    fail: console.error
+});
+    //找到这个人在哪些群里面？？？？？？？？？
     
     wx.cloud.init();
     var that=this;
     wx.cloud.callFunction({
     name : 'GetTodosOfGroup',
     data:{
-      groupID:"45"
+      groupID:"45"//当前用户所在的所有群
     },
     success : function(res){
-        console.log(res.result.data[0].description);//打印出第一条数据
-        thingList[index]=res.result.data[0].description;//这里是测试数据要修改
-        dueDate[index++]=res.result.data[0].due;//这里是测试数据要修改
-        console.log(thingList.length);
-        var value="2022-05-29"//dueDate[0];//这里是测试数据要修改
-        var value2=Todaydate;
-        var value_num=new Date(value.replace(/-/g,"/"));
-        var value2_num=new Date(value2.replace(/-/g,"/"));
-        var leftdays=parseInt((value_num.getTime() - value2_num.getTime()) / (1000*60*60*24));
-        console.log(value_num);
-        console.log(value2_num);
-        that.setData({
-          array:thingList,
-          dueDate:dueDate,
-          daysleft:leftdays
-        })
+        for(var i=0;i<res.result.data.length;i++)//attention
+        {
+          console.log(res.result.data[i].description);
+          console.log(res.result.data.length);//打印出第一条数据
+          thingList[index]=res.result.data[i].description;//这里是测试数据要修改
+          dueDate[index]=res.result.data[i].due;//这里是测试数据要修改
+          console.log(thingList.length);
+          
+          var value=dueDate[i]//dueDate[0];//这里是测试数据要修改
+          var value2=Todaydate;
+          var value_num=new Date(value.replace(/-/g,"/"));
+          var value2_num=new Date(value2.replace(/-/g,"/"));
+          var leftdays=parseInt((value_num.getTime() - value2_num.getTime()) / (1000*60*60*24));
+          console.log(value_num);
+          console.log(value2_num);
+          that.setData({
+            array:thingList,
+            dueDate:dueDate,
+            [`daysleft[${i}]`]:leftdays
+          });
+          index++;
+        }
+        console.log(that.data.visibility);
+        index=res.result.data.length;
     },
     fail: console.error
     });
+
+     
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
+  test: function(e){
+    wx.setStorage({
+      key:"test2",
+      data:this.data.visibility
+    })
+  },
+
   onReady: function () {
 
   },
@@ -124,7 +165,8 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    //wx.setStorageSync('key', data)
+        
   },
 
   /**
@@ -149,14 +191,11 @@ Page({
   }
 })
 var index=0;
-var isOverDue=1;
 var thingList=[];
-var isFinished=[];
 var dueDate=[];
 const app=getApp();
 app.globalData.testToDoList=['学HTML','学CSS','学JS'];
 var ToDoID=0;
-var IDofGroup;
 var repeat=[];
 var toReportday=[];
 const util=require('../../utils/util.js')

@@ -11,7 +11,8 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
-    }),
+    })
+    /*
     wx.cloud.init();
     wx.cloud.callFunction({
     name : 'AddTodo',
@@ -32,7 +33,7 @@ App({
     },
     fail: console.error
   });
-  
+  */
   },
   globalData: {
     userInfo: null,
