@@ -1,0 +1,16 @@
+/* pages/addThing/addThing.wxss */
+.container1 view{
+    width: 280dx;
+    height: 50dx;
+    text-align: left;
+
+}
+.container1 view:nth-child(1){
+
+}
+.container1 view:nth-child(2){
+    
+}
+.container1 view:nth-child(3){
+    
+}

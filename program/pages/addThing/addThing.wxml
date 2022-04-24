@@ -1,0 +1,9 @@
+<!--pages/addThing/addThing.wxml-->
+<text>pages/addThing/addThing.wxml</text>
+<view class="container1">
+    <view>收件人：</view>
+    <view>截止日期：</view>
+    <view>标题：</view>
+    <textarea class="input" name="remark" placeholder="请输入事件" auto-focus="true" />
+
+</view>
