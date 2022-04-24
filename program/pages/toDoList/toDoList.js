@@ -73,6 +73,7 @@ Page({
     //   })
     // }
     //从服务区获取数据
+    var that=this;
     wx.cloud.init();
     wx.cloud.callFunction({
     name : 'GetTodosOfUser',
@@ -85,6 +86,9 @@ Page({
             key:"key",
             success (res) {
               console.log(res.data);
+              that.setData({
+                visibility:res.data
+              })
             }
           });
           console.log(that.data.visibility);
@@ -138,9 +142,21 @@ Page({
    */
   test: function(e){
     wx.setStorage({
-      key:"test2",
-      data:this.data.visibility
+      key:"key",
+      data:this.data.visibility,
+      success (){
+        console.log("chengle");
+      }
     })
+  },
+
+  clear: function(e){
+    wx.clearStorage({
+      success () {
+      console.log("clear");
+    }
+    });
+    
   },
 
   onReady: function () {
