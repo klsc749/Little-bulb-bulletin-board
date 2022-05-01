@@ -1,0 +1,123 @@
+/* pages/users/users.wxss */
+.pageContainer {
+  display:flex;
+  min-height: 100vh;
+  background-color:rgba(192, 200, 207, 0.315);
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.up {
+  display: block;
+  height: 25%;
+  width: 85%;
+  margin-left: 7.5%;
+  margin-top: 5%;
+}
+
+.middle {
+  display: block;
+  margin: 60rpx auto;
+  width: 85%;
+  height: 50vh;
+  background-color: white;
+  border-radius: 30rpx;
+}
+
+.bottom {
+  display: block;
+  height: 15vh;
+  background-color: white;
+  width: 85%;
+  border-radius: 30rpx;
+  margin: 0 auto;
+}
+
+.touxiang {
+  display: inline-block;
+  height: 240rpx;
+  width: 240rpx;
+  border-radius: 200rpx;
+}
+
+.information {
+  display: inline-block;
+  position: absolute;
+  height: 240rpx;
+  width: 340rpx;
+  background-color: #fff;
+  margin-left: 50rpx;
+  top:3.2%;
+  left:40%;
+  border-radius: 30rpx;
+}
+
+.names {
+  display: flex;
+  align-items: center;
+  font-size: large;
+  position: relative;
+  margin-top: 50rpx;
+  justify-content: center;
+}
+
+.schools {
+  display: flex;
+  align-items: center;
+  font-size: small;
+  position: relative;
+  margin-top: 40rpx;
+  justify-content: center;
+  color: rgb(150, 147, 147);
+}
+
+.modify {
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
+  height: 50rpx;
+  width: 80rpx;
+  border: 1px solid gray;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.tap {
+  color: rgb(255, 255, 255);
+  background-color: gray;
+  border-radius: 30rpx;
+}
+
+.group {
+  height: 50rpx;
+  border-radius: 30rpx;
+  margin-top: 40rpx;
+  line-height: 50rpx;
+  color: gray;
+  font-weight: 600;
+  padding-left: 30rpx;
+}
+
+.rightbutton {
+  height: 40rpx;
+  width: 40rpx;
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+}
+
+.button {
+  line-height: 15vh;
+  display: inline-flex;
+  justify-content: center;
+  width: 50%;
+}
+
+.icon {
+  height: 40rpx;
+  width: 40rpx;
+  position: relative;
+  top: 5.5vh;
+}

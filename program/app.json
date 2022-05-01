@@ -3,14 +3,14 @@
     "pages": [
         "pages/toDoList/toDoList",
         "pages/index/index",
-        "pages/logs/logs"
+        "pages/users/users"
     ],
 
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#789",
-        "navigationBarTitleText": "Weixin",
-        "navigationBarTextStyle": "black"
+        "navigationBarTitleText": "小灯泡简告栏",
+        "navigationBarTextStyle": "white"
     },
     "tabBar": {
         "list": [{
@@ -26,7 +26,7 @@
             "selectedIconPath": "/resourse/icons/添加.png"
         },
         {
-            "pagePath": "pages/logs/logs",
+            "pagePath": "pages/users/users",
             "text": "我的",
             "iconPath": "/resourse/icons/我的 (2).png",
             "selectedIconPath": "/resourse/icons/我的 (1).png"
