@@ -2,6 +2,7 @@
     "cloud": true,
     "pages": [
         "pages/toDoList/toDoList",
+        "pages/addThing/addThing",
         "pages/index/index",
         "pages/users/users"
     ],
