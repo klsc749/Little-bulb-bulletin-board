@@ -300,17 +300,47 @@ wx.cloud.callFunction({
   > ```javascript
   > wx.cloud.init();
   > wx.cloud.callFunction({
-  >     name : 'SetTodoDone',
-  >     data : {
-  >         userID : "ocFn-4txhpm6foAh4NMRKo_498Zw",
-  >         todoID : "d4107ab16251886b061a15093c1f26f5"
-  >     },
-  >     success : function(res){
+  >  name : 'SetTodoDone',
+  >  data : {
+  >      userID : "ocFn-4txhpm6foAh4NMRKo_498Zw",
+  >      todoID : "d4107ab16251886b061a15093c1f26f5"
+  >  },
+  >  success : function(res){
   > 		console.log(res.result);
-  >     },
-  >     fail: console.error
+  >  },
+  >  fail: console.error
   > });
   > ```
+  
+* 添加Bug到数据库中
+
+  > 函数名 : AddBugs
+  >
+  > 传入数据
+  >
+  > ```json
+  > description : "........"
+  > ```
+  > 
+  >返回数据
+  > 
+  >0代表设置失败，1代表设置成功
+  > 
+  >使用示例
+  > 
+  >```javascript
+  > wx.cloud.init();
+  > wx.cloud.callFunction({
+  > name : 'AddBugs',
+  >  data : {
+  >    description : "......"
+  >    },
+  >    success : function(res){
+  >  		console.log(res.result);
+  >  },
+  > fail: console.error
+  >  });
+  >  ```
 
 
 ## 设计
