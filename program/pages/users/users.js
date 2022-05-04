@@ -99,16 +99,11 @@ Page({
         console.log("fail"+res);
       }
     })
-    wx.getUserInfo({
-      
-      success (res) {
-        var userinfo=res.userInfo;
-        var ava=userinfo.avatarUrl;
-        that.setData({
-          url:ava
-        })
-      }
+    var app=getApp();
+    this.setData({
+      url:app.globalData.userInfo
     })
+    console.log(this.url);
   },
 
   /**

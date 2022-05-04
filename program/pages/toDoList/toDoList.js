@@ -18,6 +18,13 @@ Page({
     console.log(i);
     this.setData({
       [`visibility[${i}]`]:1
+    });
+    wx.setStorage({
+      key:"key",
+      data:this.data.visibility,
+      success (){
+        console.log("chengle");
+      }
     })
   },
 
@@ -28,9 +35,9 @@ Page({
 
   showDetail: function(e){
     
-    console.log(e);
+    console.log("showDetail");
     var i=parseInt(e.currentTarget.dataset.ids);
-    if(this.data.visibility[i]==0)
+    if(this.data.visibility[i]==0||this.data.visibility[i]==null)
     {
         wx.showModal({
         title:'设置提醒推送:(格式：剩余多少天提醒/重复提醒时间)',
@@ -54,6 +61,23 @@ Page({
       })
     }
     
+  },
+
+  sort: function(e){
+    wx.showModal({
+      cancelColor: 'cancelColor',
+      title:'排序',
+      cancelText:'群组排序',
+      confirmText:'时间排序',
+      success (res) {
+        if(confirm){
+          
+        }
+      },
+      fail (res) {
+
+      }
+    })
   },
 
   /**

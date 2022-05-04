@@ -26,11 +26,11 @@
     </view>
   </view>
 
-  <view class="sortAndEdit" hover-class="tapeffect">
+  <view class="sortAndEdit" hover-class="tapeffect" bindtap="sort">
     排序/编辑
   </view>
   <button bindtap="test">
-    test
+    save
   </button>
   <button bindtap="clear">
     clear

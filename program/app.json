@@ -3,7 +3,6 @@
     "pages": [
         "pages/toDoList/toDoList",
         "pages/addThing/addThing",
-        "pages/index/index",
         "pages/users/users"
     ],
 
@@ -21,7 +20,7 @@
           "selectedIconPath": "resourse/icons/待办事项2.png"
         },
         {
-            "pagePath": "pages/index/index",
+            "pagePath": "pages/addThing/addThing",
             "text": "添加",
             "iconPath": "/resourse/icons/添加2.png",
             "selectedIconPath": "/resourse/icons/添加.png"
