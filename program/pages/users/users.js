@@ -71,9 +71,23 @@ Page({
       editable:true,
       placeholderText:'哪儿有BUG呀？',
       title:'BUG反馈',
+      content:'',
       success (res) {
-        if(res.confirm)
-        console.log(res.content);
+        if(res.confirm) {
+          console.log(res.content);
+          wx.cloud.init();
+          wx.cloud.callFunction({
+          name : 'AddBugs',
+          data : {
+            description : res.content
+            },
+          success : function(ress){
+            console.log(ress.result);
+        },
+          fail: console.error
+          });
+        }
+        
         else{
           console.log("cancle");
         }
