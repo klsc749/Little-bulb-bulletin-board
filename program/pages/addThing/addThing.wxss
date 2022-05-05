@@ -1,8 +1,11 @@
 /* pages/addThing/addThing.wxss */
+
 .container1 view{
-    width: 300px;
+    width: 280px;
     height: 50px;
-    background-color: burlywood
+    border: groove;
+    border-radius: 20rpx;
+    justify-content: space-between;
 }
 
 .reciever view{
@@ -10,12 +13,33 @@
   height:60rpx;
   width: 60rpx;
   padding-left: 20rpx;
-  color: blue;
+ 
 }
 .send{
     text-align: right;
     text-align: end;
     height: 100px;
     width: 100px;
-    border: solid;
+    
+}
+.thingData{
+  width: 320px;
+  border-radius: 5px;
+  border-style: groove;
+  height: 220px;
+  border-radius: 30rpx;
+  margin-top: 8px;
+}
+.sendBtn{
+  position: absolute;
+  right: 0px;
+  bottom: 15px;
+  border-radius: 30px;
+}
+.plusMirror{
+  width: 80px;
+  height: 160px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
 }

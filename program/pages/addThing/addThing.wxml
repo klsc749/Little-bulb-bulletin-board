@@ -1,21 +1,23 @@
 <!--pages/addThing/addThing.wxml-->
-<text>pages/addThing/addThing.wxml</text>
+
 <View class="container1">
     <view class="receiver">
         收件人：
+        <textarea class="recieverData" auto-focus="tree"></textarea>
     </view>
     <view class="deadl">
         截止日期：
+        <textarea class="ddlData" auto-focus="tree"></textarea>
     </view>
     <view class="title">
         标题：
+        <textarea class="titleData" auto-focus="tree"></textarea>
     </view>
 
 
 </View>
-
-<textarea class="input" name="remark" placeholder="请输入事件" auto-focus="true" />
-<button class="sendBtn"></button>
-<view class="send" style="display: inline-block;">
-    <image src="/resourse/icons//灯泡send.png" class="send"id="11" mode="aspectFit"></image>
-</view>
+<image class="plusMirror" src="/resourse/icons//添加放大镜与时钟.png" mode="aspectFit"></image>
+<textarea class="thingData" name="remark" placeholder="请输入事件" auto-focus="true" />
+<button class="sendBtn" plain="true" bindtap="skyOnclick">
+    <image class="sendBtnImage" src="/resourse/icons//灯泡send.png" class="send"id="11" mode="aspectFit"></image>
+</button>
