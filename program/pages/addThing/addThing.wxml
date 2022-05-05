@@ -1,9 +1,21 @@
 <!--pages/addThing/addThing.wxml-->
 <text>pages/addThing/addThing.wxml</text>
-<view class="container1">
-    <view>收件人：</view>
-    <view>截止日期：</view>
-    <view>标题：</view>
-    <textarea class="input" name="remark" placeholder="请输入事件" auto-focus="true" />
+<View class="container1">
+    <view class="receiver">
+        收件人：
+    </view>
+    <view class="deadl">
+        截止日期：
+    </view>
+    <view class="title">
+        标题：
+    </view>
 
+
+</View>
+
+<textarea class="input" name="remark" placeholder="请输入事件" auto-focus="true" />
+<button class="sendBtn"></button>
+<view class="send" style="display: inline-block;">
+    <image src="/resourse/icons//灯泡send.png" class="send"id="11" mode="aspectFit"></image>
 </view>
