@@ -2,15 +2,15 @@
 
 <View class="container1">
     <view class="receiver">
-        收件人：
+        收件人：{{person}}
         <textarea class="recieverData" auto-focus="tree"></textarea>
     </view>
     <view class="deadl">
-        截止日期：
+        截止日期：{{ddline}}
         <textarea class="ddlData" auto-focus="tree"></textarea>
     </view>
     <view class="title">
-        标题：
+        标题：{{tit}}
         <textarea class="titleData" auto-focus="tree"></textarea>
     </view>
 

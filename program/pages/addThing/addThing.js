@@ -5,6 +5,10 @@ Page({
      * Page initial data
      */
     data: {
+        person: '2022WEB开发',//收件人
+        ddline: '2022.05.09',//截止日期
+        tit: '数学',//标题
+        thing: '写数学作业'//输入的事件
 
     },
 
