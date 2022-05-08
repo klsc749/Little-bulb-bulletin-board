@@ -1,23 +1,24 @@
 <!--pages/addThing/addThing.wxml-->
+<view class="pageContainer">
+  <view class="container1">
+      <view class="receiver">
+          收件人(群组ID)：{{person}}
+          <input class="recieverData" auto-focus="tree" bindinput="getter"/>
+      </view>
+      <view class="deadl">
+          截止日期(XXXX-XX-XX)：{{ddline}}
+          <input class="ddlData" auto-focus="tree" bindinput="getter2"/>
+      </view>
+      <view class="title">
+          标题：{{tit}}
+          <input class="titleData" auto-focus="tree" bindinput="getter3"/>
+      </view>
 
-<View class="container1">
-    <view class="receiver">
-        收件人：{{person}}
-        <textarea class="recieverData" auto-focus="tree"></textarea>
-    </view>
-    <view class="deadl">
-        截止日期：{{ddline}}
-        <textarea class="ddlData" auto-focus="tree"></textarea>
-    </view>
-    <view class="title">
-        标题：{{tit}}
-        <textarea class="titleData" auto-focus="tree"></textarea>
-    </view>
 
-
-</View>
-<image class="plusMirror" src="/resourse/icons//添加放大镜与时钟.png" mode="aspectFit"></image>
-<textarea class="thingData" name="remark" placeholder="请输入事件" auto-focus="true" />
-<button class="sendBtn" plain="true" bindtap="skyOnclick">
-    <image class="sendBtnImage" src="/resourse/icons//灯泡send.png" class="send"id="11" mode="aspectFit"></image>
-</button>
+  </view>
+  <!-- <image class="plusMirror" src="/resourse/icons//添加放大镜与时钟.png" mode="aspectFit"></image> -->
+  <textarea class="thingData" name="remark" placeholder="请输入事件" auto-focus="true" bindinput="getter4"></textarea>
+  <view class="sendBtn" bindtap="sendMessage">
+      <image class="sendBtnImage" src="/resourse/icons//灯泡send.png" class="send"id="11" mode="aspectFit"></image>
+  </view>
+</view>

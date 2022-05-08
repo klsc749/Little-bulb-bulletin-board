@@ -5,11 +5,61 @@ Page({
      * Page initial data
      */
     data: {
-        person: '2022WEB开发',//收件人
-        ddline: '2022.05.09',//截止日期
-        tit: '数学',//标题
-        thing: '写数学作业'//输入的事件
+        person:"45",//收件人
+        ddline:"",//截止日期
+        tit:"",//标题
+        thing:"" //输入的事件
 
+    },
+    getter:function(e) {
+      console.log(e.detail.value);
+      this.setData({
+        person:e.detail.value
+      });
+      
+
+    },
+    getter2:function(e) {
+      console.log(e);
+      this.setData({
+        ddline:e.detail.value
+      })
+    },
+    getter3:function(e) {
+      console.log(e);
+      this.setData({
+        tit:e.detail.value
+      })
+    },
+    getter4:function(e) {
+      console.log(e);
+      this.setData({
+        thing:e.detail.value
+      })
+    },
+
+    sendMessage: function(e) {
+      console.log(this.data.person);
+       wx.cloud.init();
+       wx.cloud.callFunction({
+       name : 'AddTodo',
+     data : {
+         description :this.data.thing,
+         due :this.data.ddline,
+         groupID : this.data.person //通过查询获得
+     },
+     success : function(res){
+         console.log(res.result);
+         if(res.result == 0){
+           console.log("no");
+             //添加失败
+         }else if(res.result == 1){
+             //添加成功
+             console.log("yes");
+ 		}
+     },
+     fail: console.error
+ });
     },
 
     /**

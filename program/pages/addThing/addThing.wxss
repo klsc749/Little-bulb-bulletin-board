@@ -1,4 +1,11 @@
 /* pages/addThing/addThing.wxss */
+.pageContainer {
+  display:flex;
+  min-height: 100vh;
+  background-color:rgba(192, 200, 207, 0.315);
+  flex-direction: column;
+  flex-wrap: wrap;
+}
 
 .container1 view{
     width: 280px;
@@ -8,33 +15,59 @@
     justify-content: space-between;
 }
 
-.reciever view{
+.receiver{
   display: flex;
   height:60rpx;
-  width: 60rpx;
+  width: 600rpx;
   padding-left: 20rpx;
- 
+  margin-left: 70rpx;
+  margin-top: 10rpx;
+  background-color: white;
+}
+.deadl {
+  display: flex;
+  height:60rpx;
+  width: 600rpx;
+  padding-left: 20rpx;
+  margin-left: 70rpx;
+  margin-top: 10rpx;
+  background-color: white;
+}
+.title {
+  display: flex;
+  height:60rpx;
+  width: 600rpx;
+  padding-left: 20rpx;
+  margin-left: 70rpx;
+  margin-top: 10rpx;
+  background-color: white;
 }
 .send{
     text-align: right;
     text-align: end;
     height: 100px;
     width: 100px;
-    
+    margin: 10rpx auto;
 }
 .thingData{
-  width: 320px;
-  border-radius: 5px;
-  border-style: groove;
-  height: 220px;
+  width: 600rpx;
   border-radius: 30rpx;
-  margin-top: 8px;
+  border-style: groove;
+  height: 500rpx;
+  border-radius: 30rpx;
+  margin: 10rpx auto;
+  background-color: #fff;
+  padding-left: 20rpx;
+  padding-top: 20rpx;
 }
 .sendBtn{
-  position: absolute;
-  right: 0px;
-  bottom: 15px;
-  border-radius: 30px;
+  margin: 30rpx auto;
+  height: 50rpx;
+  width: 80rpx;
+  border-radius: 30rpx;
+  position: fixed;
+  right: 150rpx;
+  bottom: 160rpx;
 }
 .plusMirror{
   width: 80px;
@@ -42,4 +75,9 @@
   position: absolute;
   right: 0px;
   top: 0px;
+}
+.sendBtnImage {
+  height: 50rpx;
+  width: 80rpx;
+  border-radius: 30rpx;
 }
