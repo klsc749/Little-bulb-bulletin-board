@@ -2,15 +2,15 @@
 <view class="pageContainer">
   <view class="container1">
       <view class="receiver">
-          收件人(群组ID)：{{person}}
+          收件人(群组ID)：
           <input class="recieverData" auto-focus="tree" bindinput="getter"/>
       </view>
       <view class="deadl">
-          截止日期(XXXX-XX-XX)：{{ddline}}
+          截止日期(XXXX-XX-XX)：
           <input class="ddlData" auto-focus="tree" bindinput="getter2"/>
       </view>
       <view class="title">
-          标题：{{tit}}
+          标题：
           <input class="titleData" auto-focus="tree" bindinput="getter3"/>
       </view>
 

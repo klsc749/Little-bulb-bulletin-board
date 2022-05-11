@@ -8,8 +8,9 @@ Page({
     array:['none','none','coding','coding'],
     index:0,
     visibility:[],
-    dueDate:["2021-4-8"],
-    daysleft:[]
+    dueDate:[],
+    daysleft:[],
+    Doit:[]
   },
 
   deleteToDo: function(e){//其实没有把事件真的删了，只是换了个显示方式
@@ -149,16 +150,35 @@ Page({
             dueDate:dueDate,
             [`daysleft[${i}]`]:leftdays
           });
+          var toDoThings = new Object;
+          toDoThings.thing=that.data.array[i];
+          toDoThings.date=dueDate[i];
+          toDoThings.isSeen=that.data.visibility[i];
+          toDoThings.left=that.data.daysleft[i];
+          BigList[i]=toDoThings;
           index++;
         }
         console.log(that.data.visibility);
         index=res.result.data.length;
+        console.log(BigList);
+        BigList.sort((a,b)=>{return a.left-b.left});
+        console.log(BigList);
+        console.log(typeof BigList);
+        for(var i=0;i<res.result.data.length;i++)
+        {
+          that.setData({
+            [`array[${i}]`]:BigList[i].thing,
+            [`visibility[${i}]`]:BigList[i].isSeen,
+            [`dueDate[${i}]`]:BigList[i].date,
+            [`daysleft[${i}]`]:BigList[i].left
+          });
+        }
+        
     },
     fail: console.error
     });
-
-     
-
+    
+    
   },
 
   /**
@@ -239,3 +259,5 @@ var ToDoID=0;
 var repeat=[];
 var toReportday=[];
 const util=require('../../utils/util.js')
+var BigList=new Array();
+

@@ -21,7 +21,7 @@
   width: 600rpx;
   padding-left: 20rpx;
   margin-left: 70rpx;
-  margin-top: 10rpx;
+  margin-top: 80rpx;
   background-color: white;
 }
 .deadl {
@@ -64,7 +64,7 @@
   margin: 30rpx auto;
   height: 50rpx;
   width: 80rpx;
-  border-radius: 30rpx;
+  border-radius: 100rpx;
   position: fixed;
   right: 150rpx;
   bottom: 160rpx;
@@ -79,5 +79,5 @@
 .sendBtnImage {
   height: 50rpx;
   width: 80rpx;
-  border-radius: 30rpx;
+  border-radius: 100rpx;
 }

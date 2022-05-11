@@ -79,7 +79,7 @@ Page({
           wx.cloud.callFunction({
           name : 'AddBugs',
           data : {
-            description : res.content
+            description:res.content
             },
           success : function(ress){
             console.log(ress.result);
