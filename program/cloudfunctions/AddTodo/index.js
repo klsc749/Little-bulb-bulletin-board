@@ -6,11 +6,12 @@ cloud.init()
 // 云函数入口函数
 const db = cloud.database()
 exports.main = async (event, context) => {
-  if(event.due && event.description && event.groupID)
+  if(event.due && event.description && event.groupID && event.title)
   {    
     var id = await db.collection('todos').add({
       // data 字段表示需新增的 JSON 数据
       data: {
+        title : event.title,
         description: event.description,
         due: event.due,
         groupID : event.groupID,
