@@ -34,9 +34,13 @@ Page({
     ToDoID=parseInt(e.currentTarget.dataset.ids);
   },
 
-  showDetail: function(e){
+  showDetail:function(e) {
     
-    console.log("showDetail");
+  },
+
+  set: function(e){
+    
+    console.log("set");
     var i=parseInt(e.currentTarget.dataset.ids);
     if(this.data.visibility[i]==0||this.data.visibility[i]==null)
     {

@@ -39,17 +39,17 @@ Page({
     },
 
     sendMessage: function(e) {
-      console.log(this.data.person);
+      console.log(typeof this.data.ddline);
        wx.cloud.init();
        wx.cloud.callFunction({
        name : 'AddTodo',
      data : {
          description :this.data.thing,
-         due :this.data.ddline,
+         due :"2022-06-08",
          groupID : this.data.person //通过查询获得
      },
      success : function(res){
-         console.log(res.result);
+         console.log(res);
          if(res.result == 0){
            console.log("no");
              //添加失败

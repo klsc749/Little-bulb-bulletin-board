@@ -1,24 +1,29 @@
 <!--pages/addThing/addThing.wxml-->
 <view class="pageContainer">
+  <form>
   <view class="container1">
       <view class="receiver">
           收件人(群组ID)：
-          <input class="recieverData" auto-focus="tree" bindinput="getter"/>
+          <input style="display: block;" auto-focus="tree" placeholder="请输入" bindinput="getter"/>
       </view>
       <view class="deadl">
           截止日期(XXXX-XX-XX)：
-          <input class="ddlData" auto-focus="tree" bindinput="getter2"/>
+          <picker mode="date" bindchange="getter2" class="pick">
+          <text style="color: gray;">请选择</text><image src="/resourse/icons/下.png" mode="aspectFill" style="height: 30rpx;width: 30rpx;"></image>
+          </picker>
+          {{ddline}}
       </view>
-      <view class="title">
+      <view class="deadl">
           标题：
-          <input class="titleData" auto-focus="tree" bindinput="getter3"/>
+          <input auto-focus="tree" bindinput="getter3" placeholder="请输入"/>
       </view>
 
 
   </view>
   <!-- <image class="plusMirror" src="/resourse/icons//添加放大镜与时钟.png" mode="aspectFit"></image> -->
   <textarea class="thingData" name="remark" placeholder="请输入事件" auto-focus="true" bindinput="getter4"></textarea>
-  <view class="sendBtn" bindtap="sendMessage">
-      <image class="sendBtnImage" src="/resourse/icons//灯泡send.png" class="send"id="11" mode="aspectFit"></image>
-  </view>
+  </form>
+ 
+  <image class="sendBtnImage" src="/resourse/icons//灯泡send.png" mode="aspectFit"bindtap="sendMessage"></image>
+  
 </view>

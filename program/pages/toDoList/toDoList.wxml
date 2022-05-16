@@ -1,18 +1,18 @@
 <!--pages/toDoList/toDoList.wxml-->
 <view class="pageContainer">
-  <view class="ToDoItem" wx:for="{{array}}" wx:key="j" wx:for-item="i" wx:if="{{visibility[j]==0 ||visibility[j]==null}}" hover-class="tapeffect" wx:for-index="j" data-ids="{{j}}" bindtap="setID" bindtap="showDetail">
+  <view class="ToDoItem" wx:for="{{array}}" wx:key="j" wx:for-item="i" wx:if="{{visibility[j]==0 ||visibility[j]==null}}" hover-class="tapeffect" wx:for-index="j" data-ids="{{j}}" bindtap="setID" bindtap="set" capture-catch:longpress="showDetail">
     <image src="/resourse/icons/取消.png" class="leftIcon" bindtap="deleteToDo" data-ids="{{j}}"></image>
     <text class="textStyle">{{i}}</text>
     <view class="deadLine" wx:if="{{daysleft[j]>=0}}">
       <view>
         {{dueDate[j]}}
       </view>
-      <view style="display: inline;">
-        剩余<view style="color: red;display: inline;">{{daysleft[j]}}</view>天
+      <view style="display: inline-block;margin-top: 10rpx;">
+        剩余<view style="color: rgb(250, 94, 94);display: inline;">{{daysleft[j]}}</view>天
       </view>
     </view>
-    <view wx:if="{{daysleft[j]<0}}" class="deadLine">
-      <text style="color: red;">已过期</text>
+    <view wx:if="{{daysleft[j]<0}}" class="deadLineFinished">
+      <text style="color: rgb(243, 91, 91);">已过期</text>
     </view>
   </view>
 
@@ -21,13 +21,13 @@
       <image src="/resourse/icons//确定.png" class="leftIcon"id="1"></image>
     </view>
     {{i}}
-    <view class="deadLine">
+    <view class="deadLineFinished">
       已完成
     </view>
   </view>
 
   <view class="sortAndEdit" hover-class="tapeffect" bindtap="sort">
-    排序/编辑
+    排序
   </view>
   <button bindtap="test">
     save

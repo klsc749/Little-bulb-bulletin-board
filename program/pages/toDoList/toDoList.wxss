@@ -48,8 +48,19 @@
 .deadLine {
   font-size: 30rpx;
   display: inline-block;
+  margin-top: -10rpx;
   padding-right: 20rpx;
   line-height: 30rpx;
+  color: rgb(117, 115, 115);
+}
+
+.deadLineFinished {
+  font-size: 30rpx;
+  display: inline-block;
+  margin-top: 10rpx;
+  padding-right: 20rpx;
+  line-height: 30rpx;
+  color: rgb(155, 224, 141);
 }
 
 .textStyle {
