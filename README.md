@@ -39,6 +39,7 @@ wx.cloud.callFunction({
   > 传入数据
   >
   > ```json
+  > title : "标题"
   > description : "Web开发",
   > due : "2018-04-02",
   > groupID : "45"
@@ -55,21 +56,22 @@ wx.cloud.callFunction({
   > ```javascript
   > wx.cloud.init();
   > wx.cloud.callFunction({
-  >     name : 'AddTodo',
-  >     data : {
-  >         description : "Web开发",
-  >         due : "2018-04-02",
-  >         groupID : "45" //通过查询获得
-  >     },
-  >     success : function(res){
-  >         console.log(res.result);
-  >         if(res.result == 0){
-  >             //添加失败
-  >         }else if(res.result == 1){
-  >             //添加成功
+  >  name : 'AddTodo',
+  >  data : {
+  >      title : "标题",
+  >      description : "Web开发",
+  >      due : "2018-04-02",
+  >      groupID : "45" //通过查询获得
+  >  },
+  >  success : function(res){
+  >      console.log(res.result);
+  >      if(res.result == 0){
+  >          //添加失败
+  >      }else if(res.result == 1){
+  >          //添加成功
   > 		}
-  >     },
-  >     fail: console.error
+  >  },
+  >  fail: console.error
   > });
   > ```
 
