@@ -35,7 +35,11 @@ Page({
   },
 
   showDetail:function(e) {
-    
+    console.log(e);
+    wx.showModal({
+      cancelColor: 'cancelColor',
+      content:this.data.array[parseInt(e.currentTarget.dataset.ids)]
+    })
   },
 
   set: function(e){
@@ -68,21 +72,12 @@ Page({
     
   },
 
-  sort: function(e){
-    wx.showModal({
-      cancelColor: 'cancelColor',
-      title:'排序',
-      cancelText:'群组排序',
-      confirmText:'时间排序',
-      success (res) {
-        if(confirm){
-          
-        }
-      },
-      fail (res) {
+  sort1: function(e){
+    BigList.sort((a,b)=>{return a.left-b.left});
+  },
 
-      }
-    })
+  sort2:function(e) {
+    console.log("哈哈，好丑");
   },
 
   /**

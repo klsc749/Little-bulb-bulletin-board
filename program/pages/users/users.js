@@ -17,7 +17,7 @@ Page({
     var that = this;
     wx.showModal({
       cancelColor: 'cancelColor',
-      title:"修改个人信息",
+      title:"修改个人信息，记得加斜杠 /",
       editable:true,
       content:'',
       placeholderText:'样例：姓名/学校',

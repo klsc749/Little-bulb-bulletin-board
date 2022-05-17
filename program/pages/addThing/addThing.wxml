@@ -1,6 +1,6 @@
 <!--pages/addThing/addThing.wxml-->
 <view class="pageContainer">
-  <form>
+  <form bindreset="formReset">
   <view class="container1">
       <view class="receiver">
           收件人(群组ID)：
@@ -22,8 +22,9 @@
   </view>
   <!-- <image class="plusMirror" src="/resourse/icons//添加放大镜与时钟.png" mode="aspectFit"></image> -->
   <textarea class="thingData" name="remark" placeholder="请输入事件" auto-focus="true" bindinput="getter4"></textarea>
-  </form>
+  
  
   <image class="sendBtnImage" src="/resourse/icons//灯泡send.png" mode="aspectFit"bindtap="sendMessage"></image>
-  
+  <button style="position: absolute;left: 15%;bottom: 50rpx;" bindtap="reset" mode="primary" form-type="reset">重置</button>
+  </form>
 </view>

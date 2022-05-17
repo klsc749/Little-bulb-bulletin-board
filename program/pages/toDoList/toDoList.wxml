@@ -1,5 +1,13 @@
 <!--pages/toDoList/toDoList.wxml-->
 <view class="pageContainer">
+  <view class="newSort">
+    <view class="sortAndEdit" hover-class="tapeffect" bindtap="sort1">
+      时间顺序
+    </view>
+    <view class="sortAndEdit" hover-class="tapeffect" bindtap="sort2">
+      群组优先
+    </view>
+  </view>
   <view class="ToDoItem" wx:for="{{array}}" wx:key="j" wx:for-item="i" wx:if="{{visibility[j]==0 ||visibility[j]==null}}" hover-class="tapeffect" wx:for-index="j" data-ids="{{j}}" bindtap="setID" bindtap="set" capture-catch:longpress="showDetail">
     <image src="/resourse/icons/取消.png" class="leftIcon" bindtap="deleteToDo" data-ids="{{j}}"></image>
     <text class="textStyle">{{i}}</text>
@@ -26,8 +34,10 @@
     </view>
   </view>
 
-  <view class="sortAndEdit" hover-class="tapeffect" bindtap="sort">
-    排序
+  <view class="tutorial">
+    <navigator url="/pages/guidance/guidance" class="tutorial">
+      新人引导
+    </navigator>
   </view>
   <button bindtap="test">
     save

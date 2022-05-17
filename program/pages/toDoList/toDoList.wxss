@@ -18,6 +18,8 @@
   margin-top: 30rpx;
   padding-top: 20rpx;
   background-color: #fff;
+  color: rgb(117, 115, 115);
+  font-weight: 900;
 }
 
 .leftIcon {
@@ -30,14 +32,16 @@
 .sortAndEdit {
   display: flex;
   justify-content: center;
-  margin-left: 70%;
-  margin-top: 30rpx;
-  width: 25%;
-  height: 70rpx;
+  width: 50%;
+  height: 10vh;
   line-height: 70rpx;
+  color: rgb(255, 255, 255);
   border-radius: 30rpx;
-  background-color: #fff;
-  border: gray 0px solid;
+  background-color: rgb(100, 165, 109);
+  border: gray 1px solid;
+  line-height: 10vh;
+  font-weight: 500;
+  font-size: larger;
 }
 
 .tapeffect {
@@ -67,5 +71,32 @@
   overflow:hidden;
   text-overflow:ellipsis;
   
+}
+
+.newSort {
+  display: flex;
+  height: 10vh;
+  background-color: rgb(214, 212, 110);
+  width: 90%;
+  border-radius: 30rpx;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+.tutorial {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20rpx;
+  background-color: rgb(63, 226, 63);
+  border-radius: 30rpx;
+  height: 15vh;
+  width: 50rpx;
+  left: -20rpx;
+  top: 30%;
+  float: right;
+  font-weight: 700;
+  color: aliceblue;
 }
 

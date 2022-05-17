@@ -3,7 +3,8 @@
     "pages": [
         "pages/toDoList/toDoList",
         "pages/addThing/addThing",
-        "pages/users/users"
+        "pages/users/users",
+        "pages/guidance/guidance"
     ],
 
     "window": {

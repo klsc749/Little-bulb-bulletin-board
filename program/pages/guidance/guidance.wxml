@@ -1,0 +1,20 @@
+<!--pages/guidance/guidance.wxml-->
+<view class="pageContainer">
+  <swiper indicator-dots="true" class="swipitem">
+    <swiper-item style="display: block;"class="swipitem">
+      <image src="/resourse/icons/wechatdevtools_DnnBryWHRl.png" class="swip"></image>
+      
+    </swiper-item>
+    <swiper-item style="display: block;"class="swipitem"><image src="/resourse/icons/wechatdevtools_rAFWXk9Zqo.png" mode="aspectFill"class="swip">
+      </image>
+      </swiper-item>
+      <swiper-item style="display: block;"class="swipitem"><image src="/resourse/icons/wechatdevtools_7CC4x5VldA.png" mode="aspectFill"class="swipitem"></image>
+      </swiper-item>
+      
+  </swiper>
+  <button bindtap="welcome" type="primary" class="button">
+  完成
+  </button>
+</view>
+
+

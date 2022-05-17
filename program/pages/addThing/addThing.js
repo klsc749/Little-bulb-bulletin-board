@@ -44,22 +44,42 @@ Page({
        wx.cloud.callFunction({
        name : 'AddTodo',
      data : {
+         title:this.data.tit,
          description :this.data.thing,
-         due :"2022-06-08",
+         due :this.data.ddline,
          groupID : this.data.person //通过查询获得
      },
      success : function(res){
-         console.log(res);
+         //console.log(res);
          if(res.result == 0){
            console.log("no");
+           wx.showToast({
+            title: '发送失败',
+            duration:1000,
+            icon:"error"
+          })
              //添加失败
          }else if(res.result == 1){
              //添加成功
              console.log("yes");
+             wx.showToast({
+              title: '发送成功',
+              duration:1000,
+              icon:"success"
+            })
  		}
      },
      fail: console.error
  });
+    },
+    reset: function(e){
+      console.log(e);
+      this.setData({
+        tit:null,
+        person:'',
+        thing:'',
+        ddline:''
+      })
     },
 
     /**

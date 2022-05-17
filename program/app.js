@@ -12,6 +12,18 @@ App({
         var ava=userinfo.avatarUrl;
         that.globalData.userInfo=ava;
       }
+    });
+    wx.getStorage({
+      key:'isNew',
+      success (res) {
+        console.log("old");
+      },
+      fail(res) {
+        wx.setStorage({
+          key:'isNew',
+          data:1
+        })
+      }
     })
     // 登录
     wx.login({
