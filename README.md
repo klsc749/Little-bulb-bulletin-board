@@ -361,3 +361,50 @@ wx.cloud.callFunction({
 ### 数据库设计
 
 ![数据库设计](images/DatabaseDesign.png)
+
+
+
+### 推送窗口前端函数
+wx.requestSubscribeMessage({
+  tmplIds: ['GhSSse7NK-lKyu4HLHWuaQXhZzYoN6vIXpsfB2JWlVU'],  //导入模板ID
+  success (res) { }
+})
+//唤起客户端小程序订阅消息界面，返回用户订阅消息的操作结果。
+//和添加事件的发送按钮做绑定，每一次事件信息更新也需要调用一次wx.requestSubscribeMessage让用户授权发送推送
+//我们申请的推送是一次性订阅消息，在《服务通知》中查看，每一条通知都需要用户授权。
+
+
+### 推送窗口云端调用示例：
+const cloud = require('wx-server-sdk')
+cloud.init({
+  env: cloud.DYNAMIC_CURRENT_ENV,
+})
+exports.main = async (event, context) => {
+  try {
+    const result = await cloud.openapi.subscribeMessage.send({
+        "touser": 'OPENID',
+        "page": 'index',
+        "lang": 'zh_CN',
+        "data": {
+          "number01": {
+            "value": '339208499'
+          },
+          "date01": {
+            "value": '2015年01月05日'
+          },
+          "site01": {
+            "value": 'TIT创意园'
+          },
+          "site02": {
+            "value": '广州市新港中路397号'
+          }
+        },
+        "templateId": 'TEMPLATE_ID',
+        "miniprogramState": 'developer'
+      })
+    return result
+  } catch (err) {
+    return err
+  }
+}
+
