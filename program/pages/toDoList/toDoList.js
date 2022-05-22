@@ -126,7 +126,7 @@ Page({
     wx.cloud.callFunction({
     name : 'GetTodosOfGroup',
     data:{
-      groupID:"45"//当前用户所在的所有群
+      groupID:"16db756f628a2ce503ec3d387acd61e4"//当前用户所在的所有群
     },
     success : function(res){
         for(var i=0;i<res.result.data.length;i++)//attention

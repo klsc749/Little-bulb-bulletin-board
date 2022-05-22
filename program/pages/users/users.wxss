@@ -102,10 +102,15 @@
 
 .rightbutton {
   height: 40rpx;
-  width: 40rpx;
+  width: 150rpx;
   position: absolute;
+  border: 1px solid gray;
+  background-color: rgb(224, 224, 224);
+  border-radius: 30rpx;
   right: 0rpx;
   top: 0rpx;
+  font-weight: 700;
+  text-align: center;
 }
 
 .button {
@@ -120,4 +125,9 @@
   width: 40rpx;
   position: relative;
   top: 5.5vh;
+}
+
+.tapeffect {
+  background-color: rgb(184, 182, 182);
+  color: rgb(110, 106, 106);
 }

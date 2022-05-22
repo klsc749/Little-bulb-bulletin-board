@@ -81,6 +81,45 @@ Page({
         ddline:''
       })
     },
+    creatGroup: function(e) {
+      wx.showModal({
+        cancelColor: 'cancelColor',
+        title:'请输入群名',
+        editable:true,
+        placeholderText:"请输入",
+        content:'',
+        success(e) {
+          if(e.confirm){
+          wx.cloud.init();
+          wx.cloud.callFunction({
+          name : 'AddGroup',
+          data : {
+              groupName :e.content
+          },
+          success : function(res){
+              console.log(res.result);
+              if(res.result == 0){
+                  //添加失败
+                  wx.showToast({
+                    title: '创建失败',
+                    duration:1000,
+                    icon:"error"
+                  })
+              }else if(res.result == 1){
+                  //添加成功
+                  wx.showToast({
+                    title: '创建成功',
+                    duration:1000,
+                    icon:"success"
+                  })
+              }
+          },
+          fail: console.error
+          });
+          }
+        }
+      })
+    },
 
     /**
      * Lifecycle function--Called when page load

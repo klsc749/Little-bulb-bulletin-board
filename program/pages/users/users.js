@@ -11,7 +11,59 @@ Page({
     url:"/resourse/icons/微信图片_20220427184610.jpg"
   },
 
+  setGroup: function(e) {
+    wx.showModal({
+      cancelColor: 'cancelColor',
+      title:"请输入群ID",
+      editable:true,
+      placeholderText:"请输入群组ID",
+      content:"",
+      success (ress) {
+        if(ress.confirm)
+        {
+          console.log(ress.content);
+          console.log(typeof ress.content);
+          wx.cloud.init();
+          wx.cloud.callFunction({
+          name : 'AddUserToGroup',
+          data : {
+              userID : "ocFn-4txhpm6foAh4NMRKo_498Zw",//测试用成员ID
+              groupID : "16db756f628a2ce503ec3d387acd61e4",
+          },
+          success : function(res){
+              console.log(res.result);
+              if(res.result == 0){
+                  //添加失败
+                  console.log("fail to add user");
+                  wx.showToast({
+                    title: '添加失败',
+                    icon:"error",
+                    duration:1000,
+                  })
+              }else if(res.result == 1){
+                  //添加成功
+                  console.log("succeed to add user");
+                  wx.showToast({
+                    title: '添加成功',
+                    icon:"success",
+                    duration:1000,
+                  })
+              }
+          },
+          fail: console.error
+          });
+        }
+        else{
+          console.log("cancle");
+        }
+      },
+      fail (e){
 
+      }
+    })
+    
+
+  },
 
   modifyer: function(e){
     var that = this;

@@ -23,8 +23,10 @@
   <!-- <image class="plusMirror" src="/resourse/icons//添加放大镜与时钟.png" mode="aspectFit"></image> -->
   <textarea class="thingData" name="remark" placeholder="请输入事件" auto-focus="true" bindinput="getter4"></textarea>
   
- 
-  <image class="sendBtnImage" src="/resourse/icons//灯泡send.png" mode="aspectFit"bindtap="sendMessage"></image>
-  <button style="position: absolute;left: 15%;bottom: 50rpx;" bindtap="reset" mode="primary" form-type="reset">重置</button>
+  <view class="sendBtnImage" hover-class="tapeffect">
+    <image class="sendBtnImage" src="/resourse/icons//灯泡send.png" bindtap="sendMessage"></image>
+  </view>
+  <button style="position: absolute;left: 15%;bottom: 100rpx;" bindtap="reset" mode="primary" form-type="reset">重置</button>
+  <button bindtap="creatGroup" style="position: absolute;left: 15%;bottom: 50rpx;" mode="primary">创建群组</button>
   </form>
 </view>

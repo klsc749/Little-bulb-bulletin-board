@@ -17,7 +17,9 @@
   <scroll-view class="middle" scroll-y="true">
     <view style="margin-top:20rpx;margin-left: 20rpx;display: inline;padding-top: 20rpx;">已加入群组</view>
     <view style="display: inline;position: absolute;right: 20rpx;top: 20rpx;">
-      <image src="/resourse/icons/添加3.png" class="rightbutton"></image>
+      <view class="rightbutton" hover-class="tapeffect" bindtap="setGroup">
+      加入群组
+      </view>
     </view>
     <view wx:for="{{array}}" class="group" wx:key="*this" wx:for-item="item" wx:for-index="j">
       {{item}}

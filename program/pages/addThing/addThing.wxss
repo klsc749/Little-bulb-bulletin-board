@@ -76,3 +76,8 @@
   background-color: rgb(205, 231, 86);
   display: inline-block;
 }
+
+.tapeffect {
+  background-color: rgb(184, 182, 182);
+  color: #fff;
+}
