@@ -2,17 +2,17 @@
 .pageContainer {
   display:flex;
   min-height: 100vh;
-  background-color:rgba(192, 200, 207, 0.315);
+  background:-webkit-linear-gradient(bottom,rgba(157, 190, 255,0.7),rgba(254, 217, 255,0.7),rgba(255, 236, 255,0.7)) ;
   flex-direction: column;
   flex-wrap: wrap;
 }
 
 .container1 view{
-    width: 500rpx;
+    width: 600rpx;
     height: 90rpx;
-    border: groove;
+    border: #9dbeff 0px solid;
     border-radius: 20rpx;
-    justify-content: space-between;
+    margin-left:70rpx ;
 }
 
 .receiver{
@@ -21,8 +21,11 @@
   width: 600rpx;
   padding-left: 20rpx;
   margin-left: 70rpx;
-  margin-top: 80rpx;
+  margin-top: 50rpx;
   background-color: white;
+  color: rgb(102, 102, 102);
+  font-weight: 700;
+  box-shadow: 0 0 5rpx gray;
 }
 .deadl {
   display: inline-block;
@@ -30,8 +33,11 @@
   width: 600rpx;
   padding-left: 20rpx;
   margin-left: 70rpx;
-  margin-top: 10rpx;
+  margin-top: 30rpx;
   background-color: white;
+  color: rgb(102, 102, 102);
+  font-weight: 700;
+  box-shadow: 0 0 5rpx gray;
 }
 
 .thingData{
@@ -39,11 +45,12 @@
   border-radius: 30rpx;
   border-style: groove;
   height: 500rpx;
-  border-radius: 30rpx;
-  margin: 10rpx auto;
+  margin: 30rpx auto;
   background-color: #fff;
   padding-left: 20rpx;
   padding-top: 20rpx;
+  border: #9dbeff 0px solid;
+  box-shadow: 0 0 5rpx gray;
 }
 .sendBtn{
   margin: 30rpx auto;
@@ -71,10 +78,12 @@
 }
 
 .pick {
-  border: 1px solid gray;
+  border: 0px solid gray;
   border-radius: 30rpx;
-  background-color: rgb(205, 231, 86);
+  background-color: rgb(255, 255, 255);
   display: inline-block;
+  position: absolute;
+  right: 80rpx;
 }
 
 .tapeffect {

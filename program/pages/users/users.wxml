@@ -15,10 +15,13 @@
     </view>
   </view>
   <scroll-view class="middle" scroll-y="true">
-    <view style="margin-top:20rpx;margin-left: 20rpx;display: inline;padding-top: 20rpx;">已加入群组</view>
+    <view style="margin-top:20rpx;margin-left: 20rpx;display: inline-block;color: rgb(161, 161, 161);font-weight: 900;">已加入群组
+      
+    </view>
+    
     <view style="display: inline;position: absolute;right: 20rpx;top: 20rpx;">
-      <view class="rightbutton" hover-class="tapeffect" bindtap="setGroup">
-      加入群组
+      <view >
+        <image src="/resourse/icons/icon22/add.png" style="size: 40rpx;" class="rightbutton" hover-class="tapeffect" bindtap="setGroup"></image>
       </view>
     </view>
     <view wx:for="{{array}}" class="group" wx:key="*this" wx:for-item="item" wx:for-index="j">
@@ -27,10 +30,10 @@
   </scroll-view>
   <view class="bottom">
     <view class="button" hover-class="tap" bindtap="tuisong">
-      推送设置<image src="/resourse/icons/设置.png" class="icon"></image>
+      推送设置<image src="/resourse/icons/icon22/setting.png" class="icon"></image>
     </view>
     <view class="button" hover-class="tap" bindtap="bugReport">
-      上报BUG<image src="/resourse/icons/修改.png" class="icon"></image>
+      上报BUG<image src="/resourse/icons/icon22/bug.png" class="icon"></image>
     </view>
   </view>
 </view>

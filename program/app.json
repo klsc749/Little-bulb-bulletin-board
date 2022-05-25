@@ -9,28 +9,30 @@
 
     "window": {
         "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#789",
+        "navigationBarBackgroundColor": "#fff",
         "navigationBarTitleText": "小灯泡简告栏",
-        "navigationBarTextStyle": "white"
+        "navigationBarTextStyle": "black"
     },
     "tabBar": {
+      "color": "#a9b7b7",
+      "selectedColor": "#9dbeff",
         "list": [{
           "pagePath": "pages/toDoList/toDoList",
           "text": "待办",
-          "iconPath": "/resourse/icons/待办事项.png",
-          "selectedIconPath": "resourse/icons/待办事项2.png"
+          "iconPath": "/resourse/icons/icon22/unclick.jpg",
+          "selectedIconPath": "resourse/icons/icon22/todo_clicked.jpg"
         },
         {
             "pagePath": "pages/addThing/addThing",
             "text": "添加",
-            "iconPath": "/resourse/icons/添加2.png",
-            "selectedIconPath": "/resourse/icons/添加.png"
+            "iconPath": "/resourse/icons/icon22/bulb_unclicked.jpg",
+            "selectedIconPath": "/resourse/icons/icon22/bulb_clicked.jpg"
         },
         {
             "pagePath": "pages/users/users",
             "text": "我的",
-            "iconPath": "/resourse/icons/我的 (2).png",
-            "selectedIconPath": "/resourse/icons/我的 (1).png"
+            "iconPath": "/resourse/icons/icon22/user unclicked.jpg",
+            "selectedIconPath": "/resourse/icons/icon22/user clicked.jpg"
         }]
     },
     "style": "v2",

@@ -5,18 +5,18 @@ Page({
      * Page initial data
      */
     data: {
-        person:"45",//收件人
+        person:"",//收件人
         ddline:"",//截止日期
         tit:"",//标题
-        thing:"" //输入的事件
-
+        thing:"", //输入的事件
+        group:[]
     },
     getter:function(e) {
-      console.log(e.detail.value);
+      console.log(e);
+
       this.setData({
-        person:e.detail.value
-      });
-      
+        person:list[parseInt(e.detail.value)]
+      })
 
     },
     getter2:function(e) {
@@ -125,7 +125,24 @@ Page({
      * Lifecycle function--Called when page load
      */
     onLoad: function (options) {
+      var that = this;
+      wx.cloud.init();
+      wx.cloud.callFunction({
+      name : 'GetGroupsOfUser',
+      success : function(res){
+          console.log(res.result.data[0].groupID);//打印出第一条数据
+          
+          for(var i=0;i<res.result.data.length;i++){
+            list[i]=res.result.data[i].groupID
+            that.setData({
+              [`group[${i}]`]:res.result.data[i].groupID
+            })
+          }
 
+          console.log(that.data.person);
+      },
+      fail: console.error
+});
     },
 
     /**
@@ -177,3 +194,4 @@ Page({
 
     }
 })
+var list=new Array();

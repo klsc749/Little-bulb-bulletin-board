@@ -4,18 +4,21 @@
   <view class="container1">
       <view class="receiver">
           收件人(群组ID)：
-          <input style="display: block;" auto-focus="tree" placeholder="请输入" bindinput="getter"/>
+          <picker mode="selector" range="{{group}}" bindchange="getter" class="pick">
+          <image src="/resourse/icons/icon22/add.png" mode="aspectFill" style="height: 60rpx;width: 60rpx;"></image>
+          </picker>
+          {{person}}
       </view>
       <view class="deadl">
-          截止日期(XXXX-XX-XX)：
+          截止日期：
           <picker mode="date" bindchange="getter2" class="pick">
-          <text style="color: gray;">请选择</text><image src="/resourse/icons/下.png" mode="aspectFill" style="height: 30rpx;width: 30rpx;"></image>
+          <image src="/resourse/icons/icon22/add.png" mode="aspectFill" style="height: 60rpx;width: 60rpx;"></image>
           </picker>
           {{ddline}}
       </view>
       <view class="deadl">
           标题：
-          <input auto-focus="tree" bindinput="getter3" placeholder="请输入"/>
+          <input auto-focus="tree" bindinput="getter3" placeholder="请输入" style="font-weight: 300;"/>
       </view>
 
 
@@ -24,9 +27,9 @@
   <textarea class="thingData" name="remark" placeholder="请输入事件" auto-focus="true" bindinput="getter4"></textarea>
   
   <view class="sendBtnImage" hover-class="tapeffect">
-    <image class="sendBtnImage" src="/resourse/icons//灯泡send.png" bindtap="sendMessage"></image>
+    <image class="sendBtnImage" src="/resourse/icons/icon22/SEND.png" bindtap="sendMessage"></image>
   </view>
-  <button style="position: absolute;left: 15%;bottom: 100rpx;" bindtap="reset" mode="primary" form-type="reset">重置</button>
-  <button bindtap="creatGroup" style="position: absolute;left: 15%;bottom: 50rpx;" mode="primary">创建群组</button>
+  <button style="position: absolute;left: 10%;bottom: 200rpx;color: rgb(90, 90, 90);" bindtap="reset" mode="primary" form-type="reset">重置</button>
+  <button bindtap="creatGroup" style="position: absolute;left: 10%;bottom: 100rpx; color: rgb(90, 90, 90);" type="default">创建群组</button>
   </form>
 </view>

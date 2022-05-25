@@ -5,12 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    array:['none','none','coding','coding'],
+    array:['loading1','loading2','loading3','loading4'],
     index:0,
     visibility:[],
     dueDate:[],
     daysleft:[],
-    Doit:[]
+    Doit:[],
+    detail:[],
+    group:[],
+    isTop:[],
   },
 
   deleteToDo: function(e){//其实没有把事件真的删了，只是换了个显示方式
@@ -19,6 +22,22 @@ Page({
     console.log(i);
     this.setData({
       [`visibility[${i}]`]:1
+    });
+    wx.setStorage({
+      key:"key",
+      data:this.data.visibility,
+      success (){
+        console.log("chengle");
+      }
+    })
+  },
+
+  reset:function(e){
+    console.log(e);
+    var i=parseInt(e.currentTarget.dataset.ids);
+    console.log(i);
+    this.setData({
+      [`visibility[${i}]`]:0
     });
     wx.setStorage({
       key:"key",
@@ -38,7 +57,7 @@ Page({
     console.log(e);
     wx.showModal({
       cancelColor: 'cancelColor',
-      content:this.data.array[parseInt(e.currentTarget.dataset.ids)]
+      content:this.data.detail[parseInt(e.currentTarget.dataset.ids)]
     })
   },
 
@@ -73,21 +92,32 @@ Page({
   },
 
   sort1: function(e){
+    this.setData({
+      isTop:[]
+    })
     BigList.sort((a,b)=>{return a.left-b.left});
   },
 
   sort2:function(e) {
     console.log("哈哈，好丑");
+    console.log(e);
+    for(var i=0;i<BigList.length;i++){
+      if(BigList[i].from==groupList[parseInt(e.detail.value)]){
+        this.setData({
+          [`isTop[${i}]`]:1
+        })
+      }
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("first");
+   // console.log("first");
     console.log(this.data.visibility);
     var Todaydate=util.formatDate(new Date());
-    console.log(typeof Todaydate);
+   // console.log(typeof Todaydate);
     // for(index=0;index<app.globalData.testToDoList.length;index++)
     // {
     //   thingList[index]=app.globalData.testToDoList[index];
@@ -98,86 +128,122 @@ Page({
     // }
     //从服务区获取数据
     var that=this;
-    wx.cloud.init();
-    wx.cloud.callFunction({
-    name : 'GetTodosOfUser',
-    data: {
-        userID : "ocFn-4u3IjIMQZ_csfo3IhzWrXJM"
-    },
-    success : function(res){
-          console.log(res.result);
-          wx.getStorage({
-            key:"key",
-            success (res) {
-              console.log(res.data);
-              that.setData({
-                visibility:res.data
-              })
-            }
-          });
-          console.log(that.data.visibility);
-    },
-    fail: console.error
-});
-    //找到这个人在哪些群里面？？？？？？？？？
-    
-    wx.cloud.init();
-    var that=this;
-    wx.cloud.callFunction({
-    name : 'GetTodosOfGroup',
-    data:{
-      groupID:"16db756f628a2ce503ec3d387acd61e4"//当前用户所在的所有群
-    },
-    success : function(res){
-        for(var i=0;i<res.result.data.length;i++)//attention
-        {
-          console.log(res.result.data[i].description);
-          console.log(res.result.data.length);//打印出第一条数据
-          thingList[index]=res.result.data[i].description;//这里是测试数据要修改
-          dueDate[index]=res.result.data[i].due;//这里是测试数据要修改
-          console.log(thingList.length);
-          
-          var value=dueDate[i]//dueDate[0];//这里是测试数据要修改
-          var value2=Todaydate;
-          var value_num=new Date(value.replace(/-/g,"/"));
-          var value2_num=new Date(value2.replace(/-/g,"/"));
-          var leftdays=parseInt((value_num.getTime() - value2_num.getTime()) / (1000*60*60*24));
-          console.log(value_num);
-          console.log(value2_num);
-          that.setData({
-            array:thingList,
-            dueDate:dueDate,
-            [`daysleft[${i}]`]:leftdays
-          });
-          var toDoThings = new Object;
-          toDoThings.thing=that.data.array[i];
-          toDoThings.date=dueDate[i];
-          toDoThings.isSeen=that.data.visibility[i];
-          toDoThings.left=that.data.daysleft[i];
-          BigList[i]=toDoThings;
-          index++;
-        }
-        console.log(that.data.visibility);
-        index=res.result.data.length;
-        console.log(BigList);
-        BigList.sort((a,b)=>{return a.left-b.left});
-        console.log(BigList);
-        console.log(typeof BigList);
-        for(var i=0;i<res.result.data.length;i++)
-        {
-          that.setData({
-            [`array[${i}]`]:BigList[i].thing,
-            [`visibility[${i}]`]:BigList[i].isSeen,
-            [`dueDate[${i}]`]:BigList[i].date,
-            [`daysleft[${i}]`]:BigList[i].left
-          });
-        }
-        
-    },
-    fail: console.error
+    wx.getStorage({
+      key:"key",
+      success (res) {
+        console.log(res.data);
+        that.setData({
+          visibility:res.data
+        })
+      }
     });
+//     wx.cloud.init();
+//     wx.cloud.callFunction({
+//     name : 'GetTodosOfUser',
+//     data: {
+//         userID : "ocFn-4u3IjIMQZ_csfo3IhzWrXJM"
+//     },
+//     success : function(res){
+//           console.log(res.result);
+//           
+//           
+//           
+//           
+//           
+//           
+//           
+//           
+//           
+//           console.log(that.data.visibility);
+//     },
+//     fail: function(res){console.log("get fail");}
+// });
+    //找到这个人在哪些群里面？？？？？？？？？
+    var promise = new Promise(function(resolve,reject){
+          wx.cloud.init();
+          wx.cloud.callFunction({
+          name : 'GetGroupsOfUser',
+          success : function(res){
+              resolve(res.result.data);
+              // for(var i=0;i<res.result.data.length;i++){
+              //   console.log(res.result.data[i]);//打印出第一条数据
+              //   groupList[i]=res.result.data[i].groupID;
+              // }
+          },
+          fail: function(e){console.error}
+      })
+    });
+    promise.then(function (res){
+      for(var i=0;i<res.length;i++){
+        groupList[i]=res[i].groupID;
+        that.setData({
+          [`group[${i}]`]:res[i].groupID
+        })
+      }
     
-    
+    console.log(groupList[0]);
+    for(var nums=0;nums<groupList.length;nums++)
+    {
+      console.log("enter");
+      console.log(groupList[nums]);
+      wx.cloud.init();
+      //var that=this;
+      wx.cloud.callFunction({
+      name : 'GetTodosOfGroup',
+      data:{
+        groupID:groupList[nums]//当前用户所在的所有群
+      },
+      success : function(res){
+          for(var i=0;i<res.result.data.length;i++)//attention
+          {
+            //console.log(res.result.data[i].description);
+            //console.log(res.result.data.length);//打印出第一条数据
+            tit[index]=res.result.data[i].title;
+            thingList[index]=res.result.data[i].description;//这里是测试数据要修改
+            dueDate[index]=res.result.data[i].due;//这里是测试数据要修改
+            //console.log(thingList.length);
+            
+            var value=dueDate[index]//dueDate[0];//这里是测试数据要修改
+            var value2=Todaydate;
+            var value_num=new Date(value.replace(/-/g,"/"));
+            var value2_num=new Date(value2.replace(/-/g,"/"));
+            var leftdays=parseInt((value_num.getTime() - value2_num.getTime()) / (1000*60*60*24));
+            //console.log(value_num);
+            //console.log(value2_num);
+            that.setData({
+              array:tit,
+              dueDate:dueDate,
+              [`daysleft[${index}]`]:leftdays,
+              detail:thingList
+            });
+            var toDoThings = new Object;
+            toDoThings.thing=that.data.detail[index];
+            toDoThings.tit=that.data.array[index];
+            toDoThings.date=dueDate[index];
+            toDoThings.isSeen=that.data.visibility[index];
+            toDoThings.left=that.data.daysleft[index];
+            toDoThings.from=res.result.data[i].groupID;
+            BigList[index]=toDoThings;
+            console.log(BigList);
+            index++;
+          }
+          BigList.sort((a,b)=>{return a.left-b.left});
+          for(var i=0;i<index;i++)
+          {
+            that.setData({
+              [`array[${i}]`]:BigList[i].tit,
+              [`visibility[${i}]`]:BigList[i].isSeen,
+              [`dueDate[${i}]`]:BigList[i].date,
+              [`daysleft[${i}]`]:BigList[i].left,
+              [`detail[${i}]`]:BigList[i].thing
+            });
+          }
+      },
+      fail: console.error
+      });
+    }
+
+    })
   },
 
   /**
@@ -259,4 +325,6 @@ var repeat=[];
 var toReportday=[];
 const util=require('../../utils/util.js')
 var BigList=new Array();
+var tit=new Array();
+var groupList=new Array();
 

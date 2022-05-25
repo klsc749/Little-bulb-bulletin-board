@@ -8,7 +8,7 @@ Page({
     name:"用户",
     school:"北京邮电大学",
     array:["2022WEB开发","果园2020物联网大班群"],
-    url:"/resourse/icons/微信图片_20220427184610.jpg"
+    url:""
   },
 
   setGroup: function(e) {
@@ -27,7 +27,7 @@ Page({
           wx.cloud.callFunction({
           name : 'AddUserToGroup',
           data : {
-              userID : "ocFn-4txhpm6foAh4NMRKo_498Zw",//测试用成员ID
+              userID : "测试人员1",//测试用成员ID
               groupID : "16db756f628a2ce503ec3d387acd61e4",
           },
           success : function(res){
