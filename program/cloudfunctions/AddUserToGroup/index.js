@@ -9,7 +9,7 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext()
     if(event.userID && event.groupID)
     {    
-      await db.collection('usersOfGroup').add({
+      await db.collection('userOfGroup').add({
         // data 字段表示需新增的 JSON 数据
         data: {
             userID : event.userID,
