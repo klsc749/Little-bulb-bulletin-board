@@ -343,6 +343,100 @@ wx.cloud.callFunction({
   > fail: console.error
   >  });
   >  ```
+  >  
+
+* 从群组中删除指定用户
+
+  > 函数名：`DeletedUserOfGroup`
+  >
+  > 传入数据：
+  > ```json
+  > userID : "........", //用户id
+  > groupID : "........" //群组id
+  > ```
+  >
+  > 返回数据
+  >
+  > 1代表失败，0代表成功
+  >
+  > 使用示例
+  >
+  > ```js
+  > wx.cloud.init();
+  > wx.cloud.callFunction({
+  > name : 'DeleteUserOfGroup',
+  > data : {
+  > 	userID : "........",
+  > 	groupID : "........"
+  > },
+  > success : function(res){
+  > 		console.log(res.result);
+  > },
+  > fail: console.error
+  > });
+  > ```
+  >
+  > 
+
+* 获取群组信息
+
+  > 函数名 : `GetInformationOfGroup`
+  >
+  > 传入参数
+  > ```json
+  > groupID : "......."
+  > ```
+  >
+  > 返回数据
+  >
+  > 0代表失败，成功则通过`res.result.data`获得数据数组。`res.result.data[0].name`获取用户名。
+  >
+  > 使用示例:
+  > ```javascript
+  > wx.cloud.init();
+  > wx.cloud.callFunction({
+  > name : 'GetInformationOfGroup',
+  > data : {
+  > 	groupID : "........"
+  > },
+  > success : function(res){
+  > 		console.log(res.result.data);
+  > },
+  > fail: console.error
+  > });
+  > ```
+  >
+  > 
+
+* 获取群组创建者
+
+  > 函数名：`GetCreatedGroupsOfUser`
+  >
+  > 传入参数：
+  > ```json
+  > userID : "...."
+  > ```
+  >
+  > 返回结果：
+  >
+  > 0代表失败；成功可以通过`res.result.data`获取信息。
+  >
+  > 使用示例：
+  > ```javascript
+  > wx.cloud.init();
+  > wx.cloud.callFunction({
+  > name : 'GetCreatedGroupsOfUser',
+  > data : {
+  > 	userID : "........"
+  > },
+  > success : function(res){
+  > 		console.log(res.result.data);
+  > },
+  > fail: console.error
+  > });
+  > ```
+  >
+  > 
 
 
 ## 设计
