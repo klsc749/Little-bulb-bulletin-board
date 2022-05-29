@@ -2,7 +2,7 @@
 <view class="pageContainer">
   <view class="up">
     <view style="display: inline;">
-      <image src="{{url}}"  mode="scaleToFill"  class="touxiang"></image>
+      <image src="{{url}}"  mode="scaleToFill"  class="touxiang" bindtap="get"></image>
     </view>
     <view class="information">
       <view>

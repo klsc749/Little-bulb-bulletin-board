@@ -41,6 +41,7 @@
   height: 240rpx;
   width: 240rpx;
   border-radius: 200rpx;
+  
 }
 
 .information {

@@ -5,29 +5,22 @@ App({
     var that=this;
     const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-    wx.getUserInfo({
-      success (res) {
-        var userinfo=res.userInfo;
-        var ava=userinfo.avatarUrl;
-        that.globalData.userInfo=ava;
-      }
-    });
-    wx.getStorage({
-      key:'isNew',
-      success (res) {
-        console.log("old");
-      },
-      fail(res) {
-        wx.setStorage({
-          key:'isNew',
-          data:1
-        })
-      }
-    })
+    wx.setStorageSync('logs', logs);
+
     // 登录
     wx.login({
       success: res => {
+        console.log(res);
+        let code=res.code;
+        wx.request({
+          url: `https://api.weixin.qq.com/sns/jscode2session?appid=wx33d46f82d9b60c8f&secret=fb30a4a6929519085221501b61062a99&js_code=${code}&grant_type=authorization_code`,
+           success:(res)=>{
+            //console.log(res);
+            var userId=res.data.openid;
+            wx.setStorageSync('openid', userId)
+            //console.log(userId);
+           }
+         })
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
@@ -35,8 +28,11 @@ App({
 
   },
   globalData: {
-    userInfo: null,
-    testToDoList:null
+    userInfo:"",
+    testToDoList:null,
+    groupName:[],
+    globalList:[],
+    userGroup:[]
   },
 
 })

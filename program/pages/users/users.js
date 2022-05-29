@@ -7,7 +7,7 @@ Page({
   data: {
     name:"用户",
     school:"北京邮电大学",
-    array:["2022WEB开发","果园2020物联网大班群"],
+    array:[],
     url:""
   },
 
@@ -63,6 +63,26 @@ Page({
     })
     
 
+  },
+  get:function(e) {
+    var that=this;
+    wx.getUserProfile({
+      desc:"用以获取头像和用户ID",
+      success (res) {
+        console.log("come in success");
+        var userinfo=res.userInfo;
+        //console.log(res);
+        var ava=userinfo.avatarUrl;
+        console.log(ava);
+        wx.setStorageSync('ava', ava);
+        that.setData({
+          url:ava
+        })
+      },
+      fail (res){
+        console.log(res);
+      }
+    });
   },
 
   modifyer: function(e){
@@ -166,10 +186,37 @@ Page({
       }
     })
     var app=getApp();
+    var ava=wx.getStorageSync('ava')
     this.setData({
-      url:app.globalData.userInfo
+      url:ava
     })
-    console.log(this.url);
+    //console.log(ava);
+    var name = new Array();
+    var j=0;
+    for(var i =0;i<app.globalData.userGroup.length;i++){
+      console.log(i);
+      wx.cloud.init();
+      wx.cloud.callFunction({
+      name : 'GetInformationOfGroup',
+      data : {
+        groupID : app.globalData.userGroup[i]
+      },
+      success : function(res){
+          //console.log(res.result.data);
+        if(j<i){
+          name[j]=res.result.data[0].groupName;
+          that.setData({
+             [`array[${j}]`]:name[j],
+           })
+           j++;
+        }
+          
+         // console.log(that.data.array);
+      },
+      fail: console.error
+      });
+    }
+    //console.log(app.globalData.userGroup);
   },
 
   /**

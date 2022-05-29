@@ -4,10 +4,10 @@
   <view class="container1">
       <view class="receiver">
           收件人(群组ID)：
-          <picker mode="selector" range="{{group}}" bindchange="getter" class="pick">
+          <picker mode="selector" range="{{group}}" bindchange="getter1" class="pick">
           <image src="/resourse/icons/icon22/add.png" mode="aspectFill" style="height: 60rpx;width: 60rpx;"></image>
           </picker>
-          {{person}}
+          {{Gname}}
       </view>
       <view class="deadl">
           截止日期：

@@ -101,11 +101,18 @@ Page({
   sort2:function(e) {
     console.log("哈哈，好丑");
     console.log(e);
+    this.setData({
+      isTop:null
+    })
     for(var i=0;i<BigList.length;i++){
       if(BigList[i].from==groupList[parseInt(e.detail.value)]){
+        
         this.setData({
           [`isTop[${i}]`]:1
-        })
+        });
+        console.log(BigList[i].tit);
+        console.log(BigList[i].from);
+        console.log(this.data.isTop[i]);
       }
     }
   },
@@ -115,7 +122,7 @@ Page({
    */
   onLoad: function (options) {
    // console.log("first");
-    console.log(this.data.visibility);
+    //console.log(this.data.visibility);
     var Todaydate=util.formatDate(new Date());
    // console.log(typeof Todaydate);
     // for(index=0;index<app.globalData.testToDoList.length;index++)
@@ -131,7 +138,7 @@ Page({
     wx.getStorage({
       key:"key",
       success (res) {
-        console.log(res.data);
+        //console.log(res.data);
         that.setData({
           visibility:res.data
         })
@@ -176,16 +183,46 @@ Page({
     promise.then(function (res){
       for(var i=0;i<res.length;i++){
         groupList[i]=res[i].groupID;
-        that.setData({
-          [`group[${i}]`]:res[i].groupID
-        })
+        
       }
+    //console.log(res);
+    app.globalData.userGroup=groupList;
+    //console.log(groupList[0]);
+    var userid=wx.getStorageSync('openid');
+    console.log(userid);
     
-    console.log(groupList[0]);
+    var name = new Array();
+    var j=0;
+    console.log(groupList.length);
+    for(var i =0;i<groupList.length;i++){
+        console.log("enter");
+        wx.cloud.init();
+        console.log(app.globalData.userGroup[i]);
+        wx.cloud.callFunction({
+        name : 'GetInformationOfGroup',
+        data : {
+          groupID : app.globalData.userGroup[i]
+        },
+        success : function(res){
+            console.log(res.result.data);
+          if(j<i){
+            name[j]=res.result.data[0].groupName;
+            that.setData({
+              [`group[${j}]`]:name[j],
+            })
+            j++;
+          }
+        },
+        fail(res){
+          console.log(res);
+        }
+      });
+    }
+    
     for(var nums=0;nums<groupList.length;nums++)
     {
-      console.log("enter");
-      console.log(groupList[nums]);
+      //console.log("enter");
+      //console.log(groupList[nums]);
       wx.cloud.init();
       //var that=this;
       wx.cloud.callFunction({
@@ -224,7 +261,7 @@ Page({
             toDoThings.left=that.data.daysleft[index];
             toDoThings.from=res.result.data[i].groupID;
             BigList[index]=toDoThings;
-            console.log(BigList);
+            //console.log(BigList);
             index++;
           }
           BigList.sort((a,b)=>{return a.left-b.left});
@@ -238,12 +275,26 @@ Page({
               [`detail[${i}]`]:BigList[i].thing
             });
           }
+
+
+          
       },
       fail: console.error
       });
     }
 
     })
+    
+      // for(var i=0;i<res.result.data.length;i++){
+      //   console.log(res.result.data);
+      //   list[i]=res.result.data[i]._id;
+      //   groupname[i]=res.result.data[i].groupName;
+      // }
+      // app.globalData.groupName=groupname;
+      // app.globalData.globalList=list;
+      // that.setData({
+      //   group:groupname
+      // })
   },
 
   /**
@@ -327,4 +378,6 @@ const util=require('../../utils/util.js')
 var BigList=new Array();
 var tit=new Array();
 var groupList=new Array();
+var list=new Array();
+var groupname=new Array();
 

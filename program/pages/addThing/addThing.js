@@ -9,15 +9,17 @@ Page({
         ddline:"",//截止日期
         tit:"",//标题
         thing:"", //输入的事件
-        group:[]
+        group:[],
+        Gname:[]
     },
-    getter:function(e) {
+    getter1:function(e) {
       console.log(e);
-
       this.setData({
         person:list[parseInt(e.detail.value)]
+      });
+      this.setData({
+        Gname:groupname[parseInt(e.detail.value)]
       })
-
     },
     getter2:function(e) {
       console.log(e);
@@ -125,24 +127,29 @@ Page({
      * Lifecycle function--Called when page load
      */
     onLoad: function (options) {
-      var that = this;
-      wx.cloud.init();
-      wx.cloud.callFunction({
-      name : 'GetGroupsOfUser',
-      success : function(res){
-          console.log(res.result.data[0].groupID);//打印出第一条数据
-          
+      var userid=wx.getStorageSync('openid');
+      console.log(userid);
+      var that = this;  
+        wx.cloud.init();
+        wx.cloud.callFunction({
+        name : 'GetCreatedGroupsOfUser',
+        data : {
+          userID : userid
+        },
+        success : function(res){
           for(var i=0;i<res.result.data.length;i++){
-            list[i]=res.result.data[i].groupID
-            that.setData({
-              [`group[${i}]`]:res.result.data[i].groupID
-            })
+            console.log(res.result.data);
+            list[i]=res.result.data[i]._id;
+            groupname[i]=res.result.data[i].groupName;
           }
-
-          console.log(that.data.person);
-      },
-      fail: console.error
-});
+          that.setData({
+            group:groupname
+          })
+        },
+        fail: console.error
+        });
+      
+  
     },
 
     /**
@@ -195,3 +202,5 @@ Page({
     }
 })
 var list=new Array();
+var app=getApp();
+var groupname=new Array();
