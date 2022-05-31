@@ -42,7 +42,7 @@
     </view>
   </view>
 
-  <view class="ToDoItem" wx:if="{{visibility[j]!=0 &&visibility[j]!=null}}" hover-class="tapeffect" wx:for-index="j" wx:for="{{array}}" wx:key="j" wx:for-item="i" data-ids="{{j}}">
+  <view class="ToDoItem" wx:if="{{visibility[j]!=0 &&visibility[j]!=null &&notsee[j]==null}}" hover-class="tapeffect" wx:for-index="j" wx:for="{{array}}" wx:key="j" wx:for-item="i" data-ids="{{j}}" capture-catch:longpress="setNone">
     <view style="display: inline-block;">
       <image src="/resourse/icons/icon22/confirm.png" class="leftIcon"id="1" bindtap="reset" data-ids="{{j}}"></image>
     </view>

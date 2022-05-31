@@ -99,7 +99,7 @@ Page({
               groupName :e.content
           },
           success : function(res){
-              console.log(res.result);
+              console.log(res);
               if(res.result == 0){
                   //添加失败
                   wx.showToast({

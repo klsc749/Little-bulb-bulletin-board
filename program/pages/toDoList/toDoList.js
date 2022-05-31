@@ -14,6 +14,7 @@ Page({
     detail:[],
     group:[],
     isTop:[],
+    notsee:[]
   },
 
   deleteToDo: function(e){//其实没有把事件真的删了，只是换了个显示方式
@@ -23,13 +24,8 @@ Page({
     this.setData({
       [`visibility[${i}]`]:1
     });
-    wx.setStorage({
-      key:"key",
-      data:this.data.visibility,
-      success (){
-        console.log("chengle");
-      }
-    })
+    wx.setStorageSync('key', this.data.visibility);
+    console.log(this.data.visibility);
   },
 
   reset:function(e){
@@ -39,13 +35,7 @@ Page({
     this.setData({
       [`visibility[${i}]`]:0
     });
-    wx.setStorage({
-      key:"key",
-      data:this.data.visibility,
-      success (){
-        console.log("chengle");
-      }
-    })
+    wx.setStorageSync('key', this.data.visibility);
   },
 
   setID: function(e){
@@ -116,13 +106,19 @@ Page({
       }
     }
   },
-
+  setNone:function(e) {
+    console.log(e);
+    console.log(this.data.notsee);
+    var i=parseInt(e.currentTarget.dataset.ids);
+    this.setData({
+      [`notsee[${i}]`]:1
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
    // console.log("first");
-    //console.log(this.data.visibility);
     var Todaydate=util.formatDate(new Date());
    // console.log(typeof Todaydate);
     // for(index=0;index<app.globalData.testToDoList.length;index++)
@@ -135,36 +131,27 @@ Page({
     // }
     //从服务区获取数据
     var that=this;
-    wx.getStorage({
-      key:"key",
-      success (res) {
-        //console.log(res.data);
-        that.setData({
-          visibility:res.data
-        })
-      }
-    });
-//     wx.cloud.init();
-//     wx.cloud.callFunction({
-//     name : 'GetTodosOfUser',
-//     data: {
-//         userID : "ocFn-4u3IjIMQZ_csfo3IhzWrXJM"
-//     },
-//     success : function(res){
-//           console.log(res.result);
-//           
-//           
-//           
-//           
-//           
-//           
-//           
-//           
-//           
-//           console.log(that.data.visibility);
-//     },
-//     fail: function(res){console.log("get fail");}
-// });
+    var str=new Array();
+    str=wx.getStorageSync('key');
+    this.setData({
+      visibility:str
+    })
+    console.log(this.data.visibility);
+    // wx.getStorage({
+    //   key:"key",
+    //   success (res) {
+    //     //console.log(res.data);
+    //     that.setData({
+    //       visibility:res.data
+    //     })
+    //     console.log(that.data.visibility);
+    //   },
+    //   fail(res){
+    //     console.log(res);
+    //   }
+
+    // });
+
     //找到这个人在哪些群里面？？？？？？？？？
     var promise = new Promise(function(resolve,reject){
           wx.cloud.init();
@@ -269,15 +256,12 @@ Page({
           {
             that.setData({
               [`array[${i}]`]:BigList[i].tit,
-              [`visibility[${i}]`]:BigList[i].isSeen,
+              //[`visibility[${i}]`]:BigList[i].isSeen,
               [`dueDate[${i}]`]:BigList[i].date,
               [`daysleft[${i}]`]:BigList[i].left,
               [`detail[${i}]`]:BigList[i].thing
             });
           }
-
-
-          
       },
       fail: console.error
       });

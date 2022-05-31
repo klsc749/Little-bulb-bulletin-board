@@ -23,12 +23,13 @@ Page({
         {
           console.log(ress.content);
           console.log(typeof ress.content);
+          var userID=wx.getStorageSync('openid');
           wx.cloud.init();
           wx.cloud.callFunction({
           name : 'AddUserToGroup',
           data : {
-              userID : "测试人员1",//测试用成员ID
-              groupID : "16db756f628a2ce503ec3d387acd61e4",
+              userID : userID,//测试用成员ID
+              groupID : ress.content,
           },
           success : function(res){
               console.log(res.result);
@@ -169,6 +170,42 @@ Page({
       }
     })
   },
+  outGroup: function(e) {
+    console.log(e);
+    var thisapp=getApp();
+    var i=parseInt(e.currentTarget.id)
+    var userID=wx.getStorageSync('openid');
+    wx.showModal({
+      cancelColor: 'cancelColor',
+      title:"是否确定退出该群？",
+      success (res) {
+        console.log(res);
+        if(res.confirm){
+          wx.cloud.init();
+          wx.cloud.callFunction({
+          name : 'DeleteUserOfGroup',
+          data : {
+            userID : userID,
+            groupID :thisapp.globalData.userGroup[i]
+          },
+          success : function(res){
+              console.log(res.result);
+          },
+          fail: console.error
+          });
+        }
+        else{
+          console.log("cancle");
+          console.log(thisapp.globalData.userGroup[i]);
+        }
+      },
+      fail(res) {
+        console.log("fail"+res);
+      }
+    })
+  },
+
+
   /**
    * 生命周期函数--监听页面加载
    */

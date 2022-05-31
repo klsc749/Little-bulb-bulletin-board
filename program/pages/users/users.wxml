@@ -24,7 +24,7 @@
         <image src="/resourse/icons/icon22/add.png" style="size: 40rpx;" class="rightbutton" hover-class="tapeffect" bindtap="setGroup"></image>
       </view>
     </view>
-    <view wx:for="{{array}}" class="group" wx:key="*this" wx:for-item="item" wx:for-index="j">
+    <view wx:for="{{array}}" class="group" wx:key="*this" wx:for-item="item" wx:for-index="j" bindtap="outGroup" id="{{j}}">
       {{item}}
     </view>
   </scroll-view>
