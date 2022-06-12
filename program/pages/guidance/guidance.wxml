@@ -2,13 +2,15 @@
 <view class="pageContainer">
   <swiper indicator-dots="true" class="swipitem">
     <swiper-item style="display: block;"class="swipitem">
-      <image src="/resourse/icons/wechatdevtools_DnnBryWHRl.png" class="swip"></image>
+      <image src="/resourse/1.jpg" class="swip"></image>
       
     </swiper-item>
-    <swiper-item style="display: block;"class="swipitem"><image src="/resourse/icons/wechatdevtools_rAFWXk9Zqo.png" mode="aspectFill"class="swip">
+    <swiper-item style="display: block;"class="swipitem"><image src="/resourse/2.jpg" mode="aspectFill"class="swip">
       </image>
       </swiper-item>
-      <swiper-item style="display: block;"class="swipitem"><image src="/resourse/icons/wechatdevtools_7CC4x5VldA.png" mode="aspectFill"class="swipitem"></image>
+      <swiper-item style="display: block;"class="swipitem"><image src="/resourse/3.jpg" mode="aspectFill"class="swipitem"></image>
+      </swiper-item>
+      <swiper-item style="display: block;"class="swipitem"><image src="/resourse/4.jpg" mode="aspectFill"class="swipitem"></image>
       </swiper-item>
       
   </swiper>

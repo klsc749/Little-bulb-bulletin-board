@@ -10,6 +10,15 @@ Page({
     array:[],
     url:""
   },
+  getGId:function(e) {
+    console.log(e);
+    wx.showModal({
+      cancelColor: 'cancelColor',
+      title:"群组ID",
+      editable:true,
+      content:theID[parseInt(e.currentTarget.id)]
+    })
+  },
 
   setGroup: function(e) {
     wx.showModal({
@@ -239,9 +248,10 @@ Page({
         groupID : app.globalData.userGroup[i]
       },
       success : function(res){
-          //console.log(res.result.data);
+          console.log(res.result.data);
         if(j<i){
           name[j]=res.result.data[0].groupName;
+          theID[j]=res.result.data[0]._id;
           that.setData({
              [`array[${j}]`]:name[j],
            })
@@ -288,7 +298,10 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    //this.onLoad();
+    wx.reLaunch({
+      url:'../users/users'
+    });
   },
 
   /**
@@ -305,3 +318,4 @@ Page({
 
   }
 })
+var theID=new Array();

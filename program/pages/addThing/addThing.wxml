@@ -23,7 +23,7 @@
 
 
   </view>
-  <!-- <image class="plusMirror" src="/resourse/icons//添加放大镜与时钟.png" mode="aspectFit"></image> -->
+ 
   <textarea class="thingData" name="remark" placeholder="请输入事件" auto-focus="true" bindinput="getter4"></textarea>
   
   <view class="sendBtnImage" hover-class="tapeffect">

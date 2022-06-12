@@ -77,6 +77,17 @@
   color: rgb(150, 147, 147);
 }
 
+.look {
+  display: inline-block;
+  line-height: 50rpx;
+  text-align: center;
+  height: 50rpx;
+  width:80rpx;
+  border: 1px solid gray;
+  border-radius: 30rpx;
+  color: burlywood;
+}
+
 .modify {
   position: absolute;
   bottom: 20rpx;

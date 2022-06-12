@@ -57,10 +57,12 @@
       新人引导
     </navigator>
   </view>
-  <button bindtap="test">
+ 
+
+  <!-- <button bindtap="test">
     save
   </button>
   <button bindtap="clear">
     clear
-  </button>
+  </button> -->
 </view>

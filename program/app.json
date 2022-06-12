@@ -8,10 +8,11 @@
     ],
 
     "window": {
-        "backgroundTextStyle": "light",
+        "backgroundTextStyle": "dark",
         "navigationBarBackgroundColor": "#fff",
         "navigationBarTitleText": "小灯泡简告栏",
-        "navigationBarTextStyle": "black"
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh":true
     },
     "tabBar": {
       "color": "#a9b7b7",

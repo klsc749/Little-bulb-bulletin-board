@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    array:['loading1','loading2','loading3','loading4'],
+    array:['loading'],
     index:0,
     visibility:[],
     dueDate:[],
@@ -58,7 +58,7 @@ Page({
     if(this.data.visibility[i]==0||this.data.visibility[i]==null)
     {
         wx.showModal({
-        title:'设置提醒推送:(格式：剩余多少天提醒/重复提醒时间)',
+        title:'设置提醒推送:(格式：剩余多少天提醒/重复提醒时间)（暂未开放）',
         content:"",
         cancelColor: 'cancelColor',
         editable:true,
@@ -118,17 +118,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   // console.log("first");
+   
     var Todaydate=util.formatDate(new Date());
-   // console.log(typeof Todaydate);
-    // for(index=0;index<app.globalData.testToDoList.length;index++)
-    // {
-    //   thingList[index]=app.globalData.testToDoList[index];
-    //   dueDate[index]="2022-04-25";
-    //   this.setData({
-    //     [`daysleft[${index}]`]:666
-    //   })
-    // }
+   
     //从服务区获取数据
     var that=this;
     var str=new Array();
@@ -137,21 +129,7 @@ Page({
       visibility:str
     })
     console.log(this.data.visibility);
-    // wx.getStorage({
-    //   key:"key",
-    //   success (res) {
-    //     //console.log(res.data);
-    //     that.setData({
-    //       visibility:res.data
-    //     })
-    //     console.log(that.data.visibility);
-    //   },
-    //   fail(res){
-    //     console.log(res);
-    //   }
-
-    // });
-
+    
     //找到这个人在哪些群里面？？？？？？？？？
     var promise = new Promise(function(resolve,reject){
           wx.cloud.init();
@@ -159,10 +137,7 @@ Page({
           name : 'GetGroupsOfUser',
           success : function(res){
               resolve(res.result.data);
-              // for(var i=0;i<res.result.data.length;i++){
-              //   console.log(res.result.data[i]);//打印出第一条数据
-              //   groupList[i]=res.result.data[i].groupID;
-              // }
+              
           },
           fail: function(e){console.error}
       })
@@ -172,9 +147,9 @@ Page({
         groupList[i]=res[i].groupID;
         
       }
-    //console.log(res);
+    
     app.globalData.userGroup=groupList;
-    //console.log(groupList[0]);
+    
     var userid=wx.getStorageSync('openid');
     console.log(userid);
     
@@ -208,8 +183,7 @@ Page({
     
     for(var nums=0;nums<groupList.length;nums++)
     {
-      //console.log("enter");
-      //console.log(groupList[nums]);
+      
       wx.cloud.init();
       //var that=this;
       wx.cloud.callFunction({
@@ -220,20 +194,17 @@ Page({
       success : function(res){
           for(var i=0;i<res.result.data.length;i++)//attention
           {
-            //console.log(res.result.data[i].description);
-            //console.log(res.result.data.length);//打印出第一条数据
+            
             tit[index]=res.result.data[i].title;
             thingList[index]=res.result.data[i].description;//这里是测试数据要修改
             dueDate[index]=res.result.data[i].due;//这里是测试数据要修改
-            //console.log(thingList.length);
             
             var value=dueDate[index]//dueDate[0];//这里是测试数据要修改
             var value2=Todaydate;
             var value_num=new Date(value.replace(/-/g,"/"));
             var value2_num=new Date(value2.replace(/-/g,"/"));
             var leftdays=parseInt((value_num.getTime() - value2_num.getTime()) / (1000*60*60*24));
-            //console.log(value_num);
-            //console.log(value2_num);
+            
             that.setData({
               array:tit,
               dueDate:dueDate,
@@ -268,17 +239,54 @@ Page({
     }
 
     })
-    
-      // for(var i=0;i<res.result.data.length;i++){
-      //   console.log(res.result.data);
-      //   list[i]=res.result.data[i]._id;
-      //   groupname[i]=res.result.data[i].groupName;
-      // }
-      // app.globalData.groupName=groupname;
-      // app.globalData.globalList=list;
-      // that.setData({
-      //   group:groupname
-      // })
+    var userid=wx.getStorageSync('openid');
+      wx.showModal({
+        cancelColor: 'cancelColor',
+        title:"请授权推送服务",
+        success (res){
+          console.log(res);
+          if(res.confirm){
+            
+            console.log(userid);
+            wx.requestSubscribeMessage({
+              tmplIds: ['GhSSse7NK-lKyu4HLHWuaQXhZzYoN6vIXpsfB2JWlVU'],//这里填入模板id
+              success(res){
+                console.log('授权成功',res);
+                wx.cloud.callFunction({
+                  name: "fasong",
+                  data: {
+                    openid:userid,//目标用户的openid必须知道
+                    character_string2:{
+                      value:"test"
+                    },
+                    number3:{
+                      value:"1234"
+                    },
+                    time4:{
+                      value:"2023-02-02"
+                    },
+                    thing6:{
+                      value:"zxcv"
+                    }
+                  }
+                }).then(res => {
+                  console.log("发送单条成功", res);
+                  console.log(userid);
+                }).catch(res => {
+                  console.log("发送单条失败", res)
+                })
+              },
+              fail(res){
+                console.log('授权失败',res)
+              }
+            })
+            
+          }
+        },
+        fail(res){
+          console.log("fail",res);
+        }
+      })
   },
 
   /**
@@ -333,7 +341,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    //this.onLoad();
   },
 
   /**
@@ -364,4 +372,6 @@ var tit=new Array();
 var groupList=new Array();
 var list=new Array();
 var groupname=new Array();
+var lastNum=0;
+var currentNum=0;
 

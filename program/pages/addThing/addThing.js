@@ -119,6 +119,9 @@ Page({
           fail: console.error
           });
           }
+        },
+        complete (res){
+         
         }
       })
     },
